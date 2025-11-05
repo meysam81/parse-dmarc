@@ -52,7 +52,7 @@ func Load(path string) (*Config, error) {
 	if cfg.IMAP.Mailbox == "" {
 		cfg.IMAP.Mailbox = "INBOX"
 	}
-	if cfg.IMAP.UseTLS {
+	if !cfg.IMAP.UseTLS {
 		cfg.IMAP.UseTLS = true
 	}
 	if cfg.Database.Path == "" {
