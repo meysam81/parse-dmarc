@@ -5,7 +5,7 @@
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.0",
     "lightningcss": "^1.0.0",
-    "vite": "^5.0.0",
+    "vite": "^7.1.12",
     "vite-plugin-compression2": "^1.0.0"
   },
   "name": "parse-dmarc-frontend",
