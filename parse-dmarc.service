@@ -1,0 +1,28 @@
+[Unit]
+Description=DMARC Report Parser and Dashboard
+After=network.target
+Documentation=https://github.com/meysam81/parse-dmarc
+
+[Service]
+Type=simple
+User=parse-dmarc
+Group=parse-dmarc
+WorkingDirectory=/var/lib/parse-dmarc
+ExecStart=/usr/local/bin/parse-dmarc -config=/etc/parse-dmarc/config.json
+Restart=always
+RestartSec=10
+
+# Security settings
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/parse-dmarc
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=parse-dmarc
+
+[Install]
+WantedBy=multi-user.target

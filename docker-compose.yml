@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  parse-dmarc:
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./data:/data
+      - ./config.json:/data/config.json:ro
+    restart: unless-stopped
+    environment:
+      - TZ=UTC

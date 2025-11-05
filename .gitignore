@@ -27,6 +27,27 @@ go.work.sum
 # env file
 .env
 
+# Build artifacts
+bin/
+internal/api/dist/
+
+# Database
+*.db
+
+# Config files (sensitive)
+config.json
+
+# Node.js
+node_modules/
+frontend/node_modules/
+frontend/dist/
+
 # Editor/IDE
-# .idea/
-# .vscode/
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

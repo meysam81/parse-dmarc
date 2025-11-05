@@ -1,0 +1,17 @@
+{
+  "imap": {
+    "host": "imap.gmail.com",
+    "port": 993,
+    "username": "your-email@gmail.com",
+    "password": "your-app-password",
+    "mailbox": "INBOX",
+    "use_tls": true
+  },
+  "database": {
+    "path": "./dmarc.db"
+  },
+  "server": {
+    "port": 8080,
+    "host": "0.0.0.0"
+  }
+}
