@@ -12,6 +12,7 @@ The fastest way to get started:
 docker pull ghcr.io/meysam81/parse-dmarc:latest
 
 docker run -d \
+  --name parse-dmarc \
   -p 8080:8080 \
   -v $(pwd)/config.json:/app/config.json \
   -v $(pwd)/data:/data \
@@ -88,8 +89,8 @@ cd parse-dmarc
 2. Install dependencies and build:
 
 ```bash
-make install-deps
-make build
+just install-deps
+just build
 ```
 
 The compiled binary will be at `./bin/parse-dmarc`.
@@ -192,16 +193,16 @@ The parser handles the complete DMARC aggregate report schema:
 
 ### Prerequisites
 
-- Go 1.21+
-- Node.js 18+ or Bun
-- Make
+- Go 1.24+
+- Bun
+- Just
 
 ### Frontend Development
 
 Run frontend dev server with hot reload:
 
 ```bash
-make frontend-dev
+just frontend-dev
 ```
 
 ### Backend Development
@@ -209,13 +210,13 @@ make frontend-dev
 Run backend in development mode:
 
 ```bash
-make dev
+just dev
 ```
 
 ### Running Tests
 
 ```bash
-make test
+just test
 ```
 
 ### Code Quality
@@ -223,7 +224,7 @@ make test
 We use `golangci-lint` for Go code quality:
 
 ```bash
-make lint
+just lint
 ```
 
 ## Building
@@ -231,38 +232,26 @@ make lint
 ### Build Everything
 
 ```bash
-make build
+just build
 ```
 
 ### Build Frontend Only
 
 ```bash
-make frontend
+just frontend
 ```
 
 ### Build Backend Only
 
 ```bash
-make backend
+just backend
 ```
 
 ## Deployment
 
 ### Docker Compose
 
-Create `compose.yml`:
-
-```yaml
-services:
-  parse-dmarc:
-    image: ghcr.io/meysam81/parse-dmarc:latest
-    ports:
-      - "8080:8080"
-    volumes:
-      - ./config.json:/app/config.json
-      - ./data:/data
-    restart: unless-stopped
-```
+Present at [`compose.yml`](./compose.yml).
 
 Run with:
 
@@ -276,7 +265,7 @@ The application compiles to a single binary that can be deployed anywhere:
 
 ```bash
 # Build
-make build
+just build
 
 # Copy binary to server
 scp bin/parse-dmarc user@server:/usr/local/bin/
@@ -308,8 +297,7 @@ WantedBy=multi-user.target
 Enable and start:
 
 ```bash
-sudo systemctl enable parse-dmarc
-sudo systemctl start parse-dmarc
+sudo systemctl enable --now parse-dmarc
 ```
 
 ## IMAP Configuration Tips
@@ -350,6 +338,7 @@ This implementation is inspired by [ParseDMARC](https://github.com/domainaware/p
 - **Storage**: Embedded SQLite vs External Elasticsearch/OpenSearch
 - **UI**: Built-in Vue.js dashboard vs Kibana/Grafana
 - **Dependencies**: Minimal vs Heavy (no Elasticsearch, Kibana, etc.)
+- **Minimalism**: The total size of the docker image is 14MiB.
 
 ## License
 
