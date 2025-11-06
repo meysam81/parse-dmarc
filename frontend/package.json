@@ -6,7 +6,7 @@
     "@vitejs/plugin-vue": "^6.0.1",
     "lightningcss": "^1.30.2",
     "vite": "^7.2.0",
-    "vite-plugin-compression2": "^1.4.0"
+    "vite-plugin-compression2": "^2.3.1"
   },
   "name": "parse-dmarc-frontend",
   "scripts": {
