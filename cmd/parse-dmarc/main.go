@@ -6,6 +6,7 @@ import (
 	"log"
 	"os"
 	"os/signal"
+	"sync"
 	"syscall"
 	"time"
 
@@ -167,50 +168,104 @@ func run(ctx context.Context, cmd *cli.Command) error {
 func fetchReports(cfg *config.Config, store *storage.Storage) error {
 	log.Println("Fetching DMARC reports...")
 
-	// Create IMAP client
-	client := imap.NewClient(&cfg.IMAP)
-	if err := client.Connect(); err != nil {
-		return err
-	}
-	defer func() { _ = client.Disconnect() }()
-
-	// Fetch reports
-	reports, err := client.FetchDMARCReports()
-	if err != nil {
-		return err
+	// Get all IMAP configurations (supports both single and multiple inboxes)
+	imapConfigs := cfg.GetIMAPConfigs()
+	if len(imapConfigs) == 0 {
+		return fmt.Errorf("no IMAP configuration found")
 	}
 
-	if len(reports) == 0 {
-		log.Println("No new reports found")
-		return nil
-	}
+	log.Printf("Fetching from %d inbox(es)...", len(imapConfigs))
 
-	log.Printf("Processing %d reports...", len(reports))
+	var wg sync.WaitGroup
+	var mu sync.Mutex
+	var errors []error
+	totalProcessed := 0
 
-	// Process each report
-	processed := 0
-	for _, report := range reports {
-		for _, attachment := range report.Attachments {
-			feedback, err := parser.ParseReport(attachment.Data)
+	// Fetch from each IMAP inbox concurrently
+	for i := range imapConfigs {
+		wg.Add(1)
+		go func(imapCfg *config.IMAPConfig, index int) {
+			defer wg.Done()
+
+			mailboxName := fmt.Sprintf("%s@%s:%s", imapCfg.Username, imapCfg.Host, imapCfg.Mailbox)
+			log.Printf("[Inbox %d/%d] Connecting to %s", index+1, len(imapConfigs), mailboxName)
+
+			// Create IMAP client for this inbox
+			client := imap.NewClient(imapCfg)
+			if err := client.Connect(); err != nil {
+				mu.Lock()
+				errors = append(errors, fmt.Errorf("failed to connect to %s: %w", mailboxName, err))
+				mu.Unlock()
+				return
+			}
+			defer func() { _ = client.Disconnect() }()
+
+			// Fetch reports from this inbox
+			reports, err := client.FetchDMARCReports()
 			if err != nil {
-				log.Printf("Failed to parse %s: %v", attachment.Filename, err)
-				continue
+				mu.Lock()
+				errors = append(errors, fmt.Errorf("failed to fetch from %s: %w", mailboxName, err))
+				mu.Unlock()
+				return
 			}
 
-			if err := store.SaveReport(feedback); err != nil {
-				log.Printf("Failed to save report %s: %v", feedback.ReportMetadata.ReportID, err)
-				continue
+			if len(reports) == 0 {
+				log.Printf("[Inbox %d/%d] No new reports found in %s", index+1, len(imapConfigs), mailboxName)
+				return
 			}
 
-			log.Printf("Saved report: %s from %s (domain: %s, messages: %d)",
-				feedback.ReportMetadata.ReportID,
-				feedback.ReportMetadata.OrgName,
-				feedback.PolicyPublished.Domain,
-				feedback.GetTotalMessages())
-			processed++
+			log.Printf("[Inbox %d/%d] Processing %d report(s) from %s", index+1, len(imapConfigs), len(reports), mailboxName)
+
+			// Process each report
+			processed := 0
+			for _, report := range reports {
+				for _, attachment := range report.Attachments {
+					feedback, err := parser.ParseReport(attachment.Data)
+					if err != nil {
+						log.Printf("[Inbox %d/%d] Failed to parse %s: %v", index+1, len(imapConfigs), attachment.Filename, err)
+						continue
+					}
+
+					if err := store.SaveReport(feedback); err != nil {
+						log.Printf("[Inbox %d/%d] Failed to save report %s: %v", index+1, len(imapConfigs), feedback.ReportMetadata.ReportID, err)
+						continue
+					}
+
+					log.Printf("[Inbox %d/%d] Saved report: %s from %s (domain: %s, messages: %d)",
+						index+1, len(imapConfigs),
+						feedback.ReportMetadata.ReportID,
+						feedback.ReportMetadata.OrgName,
+						feedback.PolicyPublished.Domain,
+						feedback.GetTotalMessages())
+					processed++
+				}
+			}
+
+			mu.Lock()
+			totalProcessed += processed
+			mu.Unlock()
+
+			log.Printf("[Inbox %d/%d] Successfully processed %d report(s) from %s", index+1, len(imapConfigs), processed, mailboxName)
+		}(&imapConfigs[i], i)
+	}
+
+	// Wait for all fetches to complete
+	wg.Wait()
+
+	// Report results
+	if len(errors) > 0 {
+		log.Printf("Completed with %d error(s):", len(errors))
+		for _, err := range errors {
+			log.Printf("  - %v", err)
 		}
 	}
 
-	log.Printf("Successfully processed %d reports", processed)
+	log.Printf("Successfully processed %d total report(s) across all inboxes", totalProcessed)
+
+	// Return error only if all fetches failed
+	if len(errors) > 0 && len(errors) == len(imapConfigs) {
+		return fmt.Errorf("all inbox fetches failed")
+	}
+
 	return nil
 }

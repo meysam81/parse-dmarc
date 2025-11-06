@@ -1,0 +1,35 @@
+{
+  "database": {
+    "path": "~/.parse-dmarc/db.sqlite"
+  },
+  "imap_configs": [
+    {
+      "host": "imap.gmail.com",
+      "mailbox": "INBOX",
+      "password": "your-app-password-1",
+      "port": 993,
+      "use_tls": true,
+      "username": "account1@gmail.com"
+    },
+    {
+      "host": "imap.gmail.com",
+      "mailbox": "INBOX",
+      "password": "your-app-password-2",
+      "port": 993,
+      "use_tls": true,
+      "username": "account2@gmail.com"
+    },
+    {
+      "host": "imap.example.com",
+      "mailbox": "DMARC",
+      "password": "your-password-3",
+      "port": 993,
+      "use_tls": true,
+      "username": "account3@example.com"
+    }
+  ],
+  "server": {
+    "host": "0.0.0.0",
+    "port": 8080
+  }
+}

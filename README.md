@@ -24,6 +24,7 @@ Access the dashboard at `http://localhost:8080`
 ## Features
 
 - 📧 **IMAP Integration** - Automatically fetches DMARC reports from your email inbox
+- 📬 **Multi-Inbox Support** - Fetch from multiple IMAP accounts concurrently
 - 🔍 **RFC 7489 Compliant** - Fully compliant with DMARC aggregate report standards
 - 📊 **Beautiful Dashboard** - Modern Vue.js 3 SPA with real-time statistics
 - 🗄️ **SQLite Storage** - Lightweight embedded database, no external dependencies
@@ -124,6 +125,61 @@ The compiled binary will be at `./bin/parse-dmarc`.
   }
 }
 ```
+
+### Multi-Inbox Support
+
+Parse DMARC supports fetching from multiple IMAP inboxes concurrently. This is useful when you want to aggregate DMARC reports from multiple email accounts into a single dashboard.
+
+**Using configuration file:**
+
+Instead of using the single `imap` field, use the `imap_configs` array:
+
+```json
+{
+  "imap_configs": [
+    {
+      "host": "imap.gmail.com",
+      "port": 993,
+      "username": "account1@gmail.com",
+      "password": "your-app-password-1",
+      "mailbox": "INBOX",
+      "use_tls": true
+    },
+    {
+      "host": "imap.gmail.com",
+      "port": 993,
+      "username": "account2@gmail.com",
+      "password": "your-app-password-2",
+      "mailbox": "INBOX",
+      "use_tls": true
+    }
+  ],
+  "database": {
+    "path": "~/.parse-dmarc/db.sqlite"
+  },
+  "server": {
+    "port": 8080,
+    "host": "0.0.0.0"
+  }
+}
+```
+
+See `config.multi-inbox.example.json` for a complete example.
+
+**Using environment variable:**
+
+You can also configure multiple inboxes via the `IMAP_CONFIGS` environment variable with a JSON array:
+
+```bash
+export IMAP_CONFIGS='[{"host":"imap.gmail.com","port":993,"username":"account1@gmail.com","password":"pass1","mailbox":"INBOX","use_tls":true},{"host":"imap.gmail.com","port":993,"username":"account2@gmail.com","password":"pass2","mailbox":"INBOX","use_tls":true}]'
+```
+
+**Features:**
+- Concurrent fetching from all configured inboxes
+- Automatic deduplication of reports across inboxes
+- Individual error handling per inbox (one failing inbox doesn't stop others)
+- Progress logging shows which inbox is being processed
+- Backward compatible with single inbox configuration
 
 ### Running
 
