@@ -10,9 +10,10 @@ import (
 
 // Config holds the application configuration
 type Config struct {
-	IMAP     IMAPConfig     `json:"imap"`
-	Database DatabaseConfig `json:"database"`
-	Server   ServerConfig   `json:"server"`
+	IMAP        IMAPConfig     `json:"imap"`
+	IMAPConfigs []IMAPConfig   `json:"imap_configs"`
+	Database    DatabaseConfig `json:"database"`
+	Server      ServerConfig   `json:"server"`
 }
 
 // IMAPConfig holds IMAP server configuration
@@ -34,6 +35,21 @@ type DatabaseConfig struct {
 type ServerConfig struct {
 	Port int    `json:"port" env:"SERVER_PORT" envDefault:"8080"`
 	Host string `json:"host" env:"SERVER_HOST" envDefault:"0.0.0.0"`
+}
+
+// GetIMAPConfigs returns all IMAP configurations, normalizing single and multiple configs
+func (c *Config) GetIMAPConfigs() []IMAPConfig {
+	// If IMAPConfigs array is populated, use it
+	if len(c.IMAPConfigs) > 0 {
+		return c.IMAPConfigs
+	}
+
+	// Otherwise, use the single IMAP config for backward compatibility
+	if c.IMAP.Host != "" {
+		return []IMAPConfig{c.IMAP}
+	}
+
+	return []IMAPConfig{}
 }
 
 func defaultDBPath() (string, error) {
@@ -69,15 +85,48 @@ func Load(path string) (*Config, error) {
 		}
 	}
 
-	if err := env.Parse(&cfg); err != nil {
-		return nil, err
+	// Support IMAP_CONFIGS environment variable for multiple configs
+	imapConfigsJSON := os.Getenv("IMAP_CONFIGS")
+	if imapConfigsJSON != "" {
+		var imapConfigs []IMAPConfig
+		if err := json.Unmarshal([]byte(imapConfigsJSON), &imapConfigs); err != nil {
+			return nil, err
+		}
+		cfg.IMAPConfigs = imapConfigs
 	}
 
-	if cfg.IMAP.Port == 0 {
-		cfg.IMAP.Port = 993
+	// Only parse environment variables if we're using single IMAP config
+	// (env.Parse incorrectly applies envDefault to array elements)
+	if len(cfg.IMAPConfigs) == 0 {
+		if err := env.Parse(&cfg); err != nil {
+			return nil, err
+		}
+	} else {
+		// Parse only non-IMAP fields to avoid envDefault overwriting array values
+		if err := env.Parse(&cfg.Database); err != nil {
+			return nil, err
+		}
+		if err := env.Parse(&cfg.Server); err != nil {
+			return nil, err
+		}
 	}
-	if cfg.IMAP.Mailbox == "" {
-		cfg.IMAP.Mailbox = "INBOX"
+
+	// Apply defaults to all IMAP configs
+	allConfigs := cfg.GetIMAPConfigs()
+	for i := range allConfigs {
+		if allConfigs[i].Port == 0 {
+			allConfigs[i].Port = 993
+		}
+		if allConfigs[i].Mailbox == "" {
+			allConfigs[i].Mailbox = "INBOX"
+		}
+	}
+
+	// Update the config with normalized values
+	if len(cfg.IMAPConfigs) > 0 {
+		cfg.IMAPConfigs = allConfigs
+	} else if cfg.IMAP.Host != "" {
+		cfg.IMAP = allConfigs[0]
 	}
 	if cfg.Database.Path == "" {
 		cfg.Database.Path, err = defaultDBPath()
