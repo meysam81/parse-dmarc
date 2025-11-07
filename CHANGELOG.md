@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/meysam81/parse-dmarc/compare/v1.0.1...v1.0.2) (2025-11-07)
+
+
+### Bug Fixes
+
+* **dev:** bring the frontend to the root and simplify docker ([edc64e7](https://github.com/meysam81/parse-dmarc/commit/edc64e7417c910b7200bb1d727f0ba200c1a787d))
+
 ## [1.0.1](https://github.com/meysam81/parse-dmarc/compare/v1.0.0...v1.0.1) (2025-11-07)
 
 
