@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="shieldWhiteGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.95" />
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0.85" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background gradient -->
+  <rect width="1200" height="630" fill="url(#bgGradient)"/>
+
+  <!-- Decorative elements -->
+  <circle cx="100" cy="100" r="150" fill="#ffffff" opacity="0.05"/>
+  <circle cx="1100" cy="530" r="200" fill="#ffffff" opacity="0.05"/>
+  <circle cx="950" cy="150" r="100" fill="#ffffff" opacity="0.03"/>
+
+  <!-- Main shield icon -->
+  <g transform="translate(200, 150)">
+    <path d="M 150 30
+             L 240 75
+             L 240 180
+             Q 240 260, 150 340
+             Q 60 260, 60 180
+             L 60 75
+             Z"
+          fill="url(#shieldWhiteGradient)"
+          opacity="0.95"/>
+
+    <!-- Check mark -->
+    <path d="M 110 180 L 140 210 L 200 130"
+          fill="none"
+          stroke="#667eea"
+          stroke-width="18"
+          stroke-linecap="round"
+          stroke-linejoin="round"/>
+  </g>
+
+  <!-- Email icon elements -->
+  <g transform="translate(850, 280)" opacity="0.3">
+    <rect x="0" y="0" width="140" height="80" rx="10" fill="none" stroke="#ffffff" stroke-width="4"/>
+    <path d="M 0 3 L 70 50 L 140 3" fill="none" stroke="#ffffff" stroke-width="4" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Main text content -->
+  <g transform="translate(500, 200)">
+    <!-- Title -->
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="72" font-weight="700" fill="#ffffff">
+      Parse DMARC
+    </text>
+
+    <!-- Subtitle -->
+    <text x="0" y="60" font-family="Arial, sans-serif" font-size="32" fill="#ffffff" opacity="0.95">
+      Monitor Email Authentication
+    </text>
+
+    <!-- Description -->
+    <text x="0" y="120" font-family="Arial, sans-serif" font-size="24" fill="#ffffff" opacity="0.85">
+      Catch spoofing. Stop phishing.
+    </text>
+
+    <!-- Feature badges -->
+    <g transform="translate(0, 170)">
+      <!-- Badge 1 -->
+      <rect x="0" y="0" width="140" height="45" rx="22.5" fill="#ffffff" opacity="0.25"/>
+      <text x="70" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="600" fill="#ffffff" text-anchor="middle">
+        🛡️ Secure
+      </text>
+
+      <!-- Badge 2 -->
+      <rect x="155" y="0" width="160" height="45" rx="22.5" fill="#ffffff" opacity="0.25"/>
+      <text x="235" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="600" fill="#ffffff" text-anchor="middle">
+        🚀 14MB Docker
+      </text>
+
+      <!-- Badge 3 -->
+      <rect x="330" y="0" width="180" height="45" rx="22.5" fill="#ffffff" opacity="0.25"/>
+      <text x="420" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="600" fill="#ffffff" text-anchor="middle">
+        📊 Dashboard
+      </text>
+    </g>
+  </g>
+
+  <!-- Footer -->
+  <text x="600" y="580" font-family="Arial, sans-serif" font-size="20" fill="#ffffff" opacity="0.7" text-anchor="middle">
+    Free &amp; Open Source • Apache-2.0 License
+  </text>
+</svg>
