@@ -538,9 +538,15 @@ export default {
         try {
           var data = JSON.parse(dismissalData);
           var thirtyDaysInMs = 30 * 24 * 60 * 60 * 1000;
-          var timeSinceDismissal = Date.now() - data.timestamp;
-          if (timeSinceDismissal < thirtyDaysInMs) {
-            starBannerVisible.value = false;
+          if (
+            data &&
+            typeof data.timestamp === "number" &&
+            !isNaN(data.timestamp)
+          ) {
+            var timeSinceDismissal = Date.now() - data.timestamp;
+            if (timeSinceDismissal < thirtyDaysInMs) {
+              starBannerVisible.value = false;
+            }
           } else {
             // Clear old dismissal data after 30 days and show the banner again
             localStorage.removeItem("starBannerDismissed");
