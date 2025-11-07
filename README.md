@@ -1,45 +1,59 @@
 # Parse DMARC
 
-A minimal dependency Go application that parses DMARC aggregate reports and presents them in a delightful Vue.js dashboard. Built as a single binary, similar to [listmonk](https://listmonk.app/).
+**Monitor who's sending email on behalf of your domain. Catch spoofing. Stop phishing.**
 
 [![Dashboard Screenshot](./assets/demo.png)](https://github.com/meysam81/parse-dmarc)
 
-## 🚀 Quick Start with Docker
+## Why Do I Need This?
 
-The fastest way to get started:
+**DMARC** (Domain-based Message Authentication, Reporting & Conformance) helps protect your domain from email spoofing and phishing. When you enable DMARC on your domain, email providers like Gmail, Outlook, and Yahoo send you **aggregate reports** showing:
 
-```bash
-docker pull ghcr.io/meysam81/parse-dmarc:latest
+- Who's sending email claiming to be from your domain
+- Which emails passed or failed authentication (SPF/DKIM)
+- How many emails were sent, and from which IP addresses
+- Whether malicious actors are trying to impersonalize your domain
 
-docker run -d \
-  --name parse-dmarc \
-  -p 8080:8080 \
-  -v $(pwd)/config.json:/app/config.json \
-  -v $(pwd)/data:/data \
-  ghcr.io/meysam81/parse-dmarc:latest
-```
+**The Problem:** These reports arrive as compressed XML attachments in your inbox - nearly impossible to read or analyze manually.
 
-Access the dashboard at `http://localhost:8080`
+**The Solution:** Parse DMARC automatically fetches these reports from your inbox, parses them, and displays everything in a beautiful dashboard. All in a single 14MB Docker image.
 
 ## Features
 
-- 📧 **IMAP Integration** - Automatically fetches DMARC reports from your email inbox
-- 🔍 **RFC 7489 Compliant** - Fully compliant with DMARC aggregate report standards
-- 📊 **Beautiful Dashboard** - Modern Vue.js 3 SPA with real-time statistics
-- 🗄️ **SQLite Storage** - Lightweight embedded database, no external dependencies
-- 📦 **Single Binary** - Everything embedded in one executable
-- 🚀 **Minimal Dependencies** - Pure Go + Vue.js, no external services required
-- 🔒 **Secure** - TLS support for IMAP connections
+- 📧 Auto-fetches reports from any IMAP inbox (Gmail, Outlook, etc.)
+- 📊 Beautiful dashboard with real-time statistics
+- 🔍 See exactly who's sending email as your domain
+- 📦 Single binary - no databases to install, no complex setup
+- 🚀 Tiny 14MB Docker image
+- 🔒 Secure TLS support
 
 ## Quick Start
 
-### Using Docker (Recommended)
+### Step 1: Set Up DNS to Receive DMARC Reports
 
-**Pull the image:**
+**This is the most important step!** Without this, you won't receive any reports to analyze.
 
-```bash
-docker pull ghcr.io/meysam81/parse-dmarc:latest
+Add a DMARC TXT record to your domain's DNS:
+
 ```
+Name: _dmarc.yourdomain.com
+Type: TXT
+Value: v=DMARC1; p=none; rua=mailto:dmarc@yourdomain.com
+```
+
+**What this means:**
+- `p=none` - Monitor only (don't block emails yet)
+- `rua=mailto:dmarc@yourdomain.com` - Send aggregate reports to this email address
+
+**Important:** Replace `dmarc@yourdomain.com` with an actual email inbox you control. This is where Gmail, Outlook, Yahoo, etc. will send your DMARC reports.
+
+**DNS Examples:**
+- **Cloudflare:** DNS > Add record > Type: TXT, Name: `_dmarc`, Content: `v=DMARC1; p=none; rua=mailto:dmarc@yourdomain.com`
+- **Google Domains:** DNS > Custom records > TXT, Name: `_dmarc`, Data: `v=DMARC1; p=none; rua=mailto:dmarc@yourdomain.com`
+- **AWS Route53:** Create record > Type: TXT, Name: `_dmarc.yourdomain.com`, Value: `"v=DMARC1; p=none; rua=mailto:dmarc@yourdomain.com"`
+
+Reports typically start arriving within 24-48 hours.
+
+### Step 2: Run Parse DMARC with Docker
 
 **Create a configuration file:**
 
@@ -50,7 +64,7 @@ cat > config.json <<EOF
   "imap": {
     "host": "imap.gmail.com",
     "port": 993,
-    "username": "your-email@gmail.com",
+    "username": "dmarc@yourdomain.com",
     "password": "your-app-password",
     "mailbox": "INBOX",
     "use_tls": true
@@ -66,6 +80,8 @@ cat > config.json <<EOF
 EOF
 ```
 
+**For Gmail users:** You'll need an [App Password](https://support.google.com/accounts/answer/185833), not your regular Gmail password.
+
 **Run the container:**
 
 ```bash
@@ -77,281 +93,132 @@ docker run -d \
   ghcr.io/meysam81/parse-dmarc:latest
 ```
 
-### Building from Source
+**Access the dashboard:** Open `http://localhost:8080` in your browser.
 
-1. Clone the repository:
+## What You'll See
+
+Once DMARC reports start arriving and Parse DMARC processes them, your dashboard will show:
+
+- **Total messages** analyzed across all reports
+- **DMARC compliance rate** (SPF/DKIM pass rates)
+- **Top sending sources** (IP addresses and organizations sending as your domain)
+- **Authentication results** (which emails passed/failed SPF and DKIM)
+- **Policy actions** (how receiving servers handled your email)
+
+This helps you:
+- Verify your legitimate email services are properly configured
+- Detect unauthorized use of your domain
+- Gradually move from monitoring (`p=none`) to enforcement (`p=quarantine` or `p=reject`)
+
+## Configuration Options
+
+### IMAP Settings for Common Providers
+
+**Gmail:**
+```json
+{
+  "host": "imap.gmail.com",
+  "port": 993,
+  "username": "your-email@gmail.com",
+  "password": "your-app-password",
+  "use_tls": true
+}
+```
+Requires [App Password](https://support.google.com/accounts/answer/185833)
+
+**Outlook/Office 365:**
+```json
+{
+  "host": "outlook.office365.com",
+  "port": 993,
+  "username": "your-email@outlook.com",
+  "password": "your-password",
+  "use_tls": true
+}
+```
+
+**Generic IMAP:**
+Most providers use port `993` with TLS. Check your provider's documentation.
+
+### Command Line Options
+
+```bash
+# Fetch once and exit (useful for cron jobs)
+docker exec parse-dmarc ./parse-dmarc -fetch-once
+
+# Serve dashboard only (no fetching)
+docker exec parse-dmarc ./parse-dmarc -serve-only
+
+# Custom fetch interval (in seconds, default 300)
+docker exec parse-dmarc ./parse-dmarc -fetch-interval=600
+```
+
+## Frequently Asked Questions
+
+**Q: I'm not receiving any reports. What's wrong?**
+
+A: Check these things in order:
+1. Did you add the `_dmarc` TXT record to your DNS? (Use a DNS checker like `dig _dmarc.yourdomain.com TXT`)
+2. Wait 24-48 hours - reports aren't instant
+3. Is your domain sending/receiving email? No email = no reports
+4. Check your IMAP credentials are correct in `config.json`
+
+**Q: Do I need SPF and DKIM set up first?**
+
+A: No! DMARC reports will show you whether SPF and DKIM are passing or failing, which helps you configure them correctly.
+
+**Q: What should my DMARC policy be?**
+
+A: Start with `p=none` (monitoring only). After reviewing reports and fixing any issues, gradually move to `p=quarantine` and then `p=reject`.
+
+**Q: How much email traffic do I need?**
+
+A: Any amount works. Even small domains with a few emails per day will receive useful reports.
+
+**Q: Can I use a Gmail account to receive reports?**
+
+A: Yes! Create a dedicated Gmail like `dmarc@yourdomain.com`, forward it to your personal Gmail if needed, and use Gmail's IMAP settings.
+
+## Advanced
+
+### Building from Source
 
 ```bash
 git clone https://github.com/meysam81/parse-dmarc.git
 cd parse-dmarc
-```
-
-2. Install dependencies and build:
-
-```bash
 just install-deps
 just build
-```
-
-The compiled binary will be at `./bin/parse-dmarc`.
-
-### Configuration
-
-1. Generate a sample configuration file:
-
-```bash
-./bin/parse-dmarc -gen-config
-```
-
-2. Edit `config.json` with your IMAP credentials:
-
-```json
-{
-  "imap": {
-    "host": "imap.gmail.com",
-    "port": 993,
-    "username": "your-email@gmail.com",
-    "password": "your-app-password",
-    "mailbox": "INBOX",
-    "use_tls": true
-  },
-  "database": {
-    "path": "~/.parse-dmarc/db.sqlite"
-  },
-  "server": {
-    "port": 8080,
-    "host": "0.0.0.0"
-  }
-}
-```
-
-### Running
-
-**Fetch reports and start dashboard:**
-
-```bash
 ./bin/parse-dmarc -config=config.json
 ```
 
-**Fetch once and exit:**
+### Docker Compose
 
-```bash
-./bin/parse-dmarc -config=config.json -fetch-once
-```
+See [`compose.yml`](./compose.yml) for Docker Compose configuration.
 
-**Only serve dashboard (no fetching):**
-
-```bash
-./bin/parse-dmarc -config=config.json -serve-only
-```
-
-**Custom fetch interval:**
-
-```bash
-./bin/parse-dmarc -config=config.json -fetch-interval=600
-```
-
-Access the dashboard at `http://localhost:8080`
-
-## Architecture
-
-### Backend (Go)
-
-- **IMAP Client** (`internal/imap`) - Connects to email server and fetches DMARC reports
-- **Parser** (`internal/parser`) - Parses DMARC XML reports (handles gzip/zip compression)
-- **Storage** (`internal/storage`) - SQLite database layer for persisting reports
-- **API** (`internal/api`) - REST API endpoints for dashboard
-- **Config** (`internal/config`) - Configuration management
-
-### Frontend (Vue.js 3)
-
-- **Single Page Application** - Responsive, modern UI
-- **Real-time Statistics** - Compliance rates, message counts, source IPs
-- **Report Viewer** - Detailed view of individual DMARC reports
-- **Auto-refresh** - Dashboard updates every 5 minutes
-
-### DMARC Report Structure (RFC 7489)
-
-The parser handles the complete DMARC aggregate report schema:
-
-- **Report Metadata** - Organization, date range, report ID
-- **Policy Published** - DMARC policy (p, sp, pct, alignment modes)
-- **Records** - Individual authentication results:
-  - Source IP and message count
-  - DKIM authentication results
-  - SPF authentication results
-  - Policy evaluation (disposition)
-
-## API Endpoints
+### API Endpoints
 
 - `GET /api/statistics` - Dashboard statistics
 - `GET /api/reports` - List of reports (paginated)
 - `GET /api/reports/:id` - Detailed report view
 - `GET /api/top-sources` - Top sending source IPs
 
-## Development
+### Why Parse DMARC vs ParseDMARC?
 
-### Prerequisites
+This project is inspired by [ParseDMARC](https://github.com/domainaware/parsedmarc) but built for simplicity:
 
-- Go 1.24+
-- Bun
-- Just
+- **Single 14MB binary** vs Python + Elasticsearch + Kibana stack
+- **Built-in dashboard** vs external visualization tools
+- **SQLite** vs Elasticsearch (no JVM required)
+- **Zero dependencies** vs complex setup
 
-### Frontend Development
+## Contributing
 
-Run frontend dev server with hot reload:
-
-```bash
-just frontend-dev
-```
-
-### Backend Development
-
-Run backend in development mode:
-
-```bash
-just dev
-```
-
-### Running Tests
-
-```bash
-just test
-```
-
-### Code Quality
-
-We use `golangci-lint` for Go code quality:
-
-```bash
-just lint
-```
-
-## Building
-
-### Build Everything
-
-```bash
-just build
-```
-
-### Build Frontend Only
-
-```bash
-just frontend
-```
-
-### Build Backend Only
-
-```bash
-just backend
-```
-
-## Deployment
-
-### Docker Compose
-
-Present at [`compose.yml`](./compose.yml).
-
-Run with:
-
-```bash
-docker-compose up -d
-```
-
-### Binary Deployment
-
-The application compiles to a single binary that can be deployed anywhere:
-
-```bash
-# Build
-just build
-
-# Copy binary to server
-scp bin/parse-dmarc user@server:/usr/local/bin/
-
-# Run on server
-parse-dmarc -config=/etc/parse-dmarc/config.json
-```
-
-### Systemd Service
-
-Create `/etc/systemd/system/parse-dmarc.service`:
-
-```ini
-[Unit]
-Description=DMARC Report Parser
-After=network.target
-
-[Service]
-Type=simple
-User=parse-dmarc
-WorkingDirectory=/var/lib/parse-dmarc
-ExecStart=/usr/local/bin/parse-dmarc -config=/etc/parse-dmarc/config.json
-Restart=always
-
-[Install]
-WantedBy=multi-user.target
-```
-
-Enable and start:
-
-```bash
-sudo systemctl enable --now parse-dmarc
-```
-
-## IMAP Configuration Tips
-
-### Gmail
-
-- Use [App Passwords](https://support.google.com/accounts/answer/185833)
-- Host: `imap.gmail.com`, Port: `993`
-
-### Outlook/Office 365
-
-- Host: `outlook.office365.com`, Port: `993`
-- May require app password or OAuth (OAuth not yet supported)
-
-### Generic IMAP
-
-- Most providers use port `993` for TLS
-- Check your email provider's IMAP settings
-
-## Compatibility
-
-Compatible with DMARC reports from major email service providers:
-
-- Google Workspace
-- Microsoft Office 365
-- Yahoo
-- SendGrid
-- Mailchimp
-- Amazon SES
-- And any RFC 7489 compliant reporter
-
-## Comparison with ParseDMARC
-
-This implementation is inspired by [ParseDMARC](https://github.com/domainaware/parsedmarc) but differs in:
-
-- **Language**: Go instead of Python
-- **Deployment**: Single binary vs Python package
-- **Storage**: Embedded SQLite vs External Elasticsearch/OpenSearch
-- **UI**: Built-in Vue.js dashboard vs Kibana/Grafana
-- **Dependencies**: Minimal vs Heavy (no Elasticsearch, Kibana, etc.)
-- **Minimalism**: The total size of the docker image is 14MiB.
+Issues and pull requests are welcome! Please check the [issues page](https://github.com/meysam81/parse-dmarc/issues).
 
 ## License
 
-Apache-2.0 License - see [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-
-- Inspired by [ParseDMARC](https://github.com/domainaware/parsedmarc)
-- Built with [Go](https://golang.org/) and [Vue.js](https://vuejs.org/)
-- Uses [go-imap](https://github.com/emersion/go-imap) for IMAP connectivity
+Apache-2.0 - see [LICENSE](LICENSE) for details.
 
 ---
 
-**Star ⭐ this repository if you find it useful!**
-
-Made with ❤️ by developers, for developers.
+**Found this useful? Star the repo!** ⭐
