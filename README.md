@@ -11,7 +11,7 @@
 - Who's sending email claiming to be from your domain
 - Which emails passed or failed authentication (SPF/DKIM)
 - How many emails were sent, and from which IP addresses
-- Whether malicious actors are trying to impersonalize your domain
+- Whether malicious actors are trying to impersonate your domain
 
 **The Problem:** These reports arrive as compressed XML attachments in your inbox - nearly impossible to read or analyze manually.
 
