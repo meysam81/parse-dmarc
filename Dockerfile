@@ -10,6 +10,7 @@ RUN --mount=type=bind,source=package.json,target=package.json \
 
 COPY bun.lock index.html package*.json vite.config.js ./
 COPY ./src ./src
+COPY ./scripts ./scripts
 RUN bun run build
 
 FROM golang:1.25 AS mod

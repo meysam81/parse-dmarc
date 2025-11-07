@@ -1,0 +1,13 @@
+*
+!cmd
+!internal
+!public
+!scripts
+!src
+!bun.lock
+!package*.json
+!go.mod
+!go.sum
+!README.md
+!index.html
+!vite.config.js
