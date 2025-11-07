@@ -541,6 +541,10 @@ export default {
           var timeSinceDismissal = Date.now() - data.timestamp;
           if (timeSinceDismissal < thirtyDaysInMs) {
             starBannerVisible.value = false;
+          } else {
+            // Clear old dismissal data after 30 days and show the banner again
+            localStorage.removeItem("starBannerDismissed");
+            starBannerVisible.value = true;
           }
         } catch (e) {
           console.error("Failed to parse star banner dismissal data:", e);
