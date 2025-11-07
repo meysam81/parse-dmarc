@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/meysam81/parse-dmarc/compare/v1.0.0...v1.0.1) (2025-11-07)
+
+
+### Bug Fixes
+
+* **docs:** simplify README for first-time viewers ([#15](https://github.com/meysam81/parse-dmarc/issues/15)) ([7341b7b](https://github.com/meysam81/parse-dmarc/commit/7341b7bb022e5e96798e6d8d3523a377e282cf6f))
+
 ## 1.0.0 (2025-11-05)
 
 
