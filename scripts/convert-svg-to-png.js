@@ -18,10 +18,10 @@
  *   npm install --save-dev sharp
  */
 
-import { readFileSync, mkdirSync } from "fs";
-import { join, dirname } from "path";
-import { fileURLToPath } from "url";
+import { mkdirSync, readFileSync, writeFileSync } from "fs";
+import { dirname, join } from "path";
 import sharp from "sharp";
+import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -104,7 +104,7 @@ async function main() {
           );
 
           // Ensure directory exists
-          mkdirSync(dirname(output.path), { recursive: true });
+          writeFileSync(output.path, pngBuffer);
 
           // Write PNG file
           await sharp(pngBuffer).toFile(output.path);
