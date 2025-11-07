@@ -18,15 +18,15 @@
  *   npm install --save-dev sharp
  */
 
-import { readFileSync, mkdirSync } from 'fs';
-import { join, dirname } from 'path';
-import { fileURLToPath } from 'url';
-import sharp from 'sharp';
+import { readFileSync, mkdirSync } from "fs";
+import { join, dirname } from "path";
+import { fileURLToPath } from "url";
+import sharp from "sharp";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-const rootDir = join(__dirname, '..');
-const assetsDir = join(rootDir, 'assets');
+const rootDir = join(__dirname, "..");
+const assetsDir = join(rootDir, "assets");
 
 /**
  * Convert SVG buffer to PNG at specified size
@@ -40,8 +40,8 @@ async function convertSvgToPng(svgBuffer, width = null, height = null) {
 
   if (width || height) {
     sharpInstance.resize(width, height, {
-      fit: 'contain',
-      background: { r: 0, g: 0, b: 0, alpha: 0 }
+      fit: "contain",
+      background: { r: 0, g: 0, b: 0, alpha: 0 },
     });
   }
 
@@ -52,35 +52,35 @@ async function convertSvgToPng(svgBuffer, width = null, height = null) {
  * Main conversion logic
  */
 async function main() {
-  console.log('🎨 Converting SVG assets to PNG...\n');
+  console.log("🎨 Converting SVG assets to PNG...\n");
 
   const conversions = [
     // Favicon conversions (multiple sizes for different use cases)
     {
-      input: join(assetsDir, 'favicon.svg'),
+      input: join(assetsDir, "favicon.svg"),
       outputs: [
-        { path: join(assetsDir, 'favicon-16x16.png'), width: 16, height: 16 },
-        { path: join(assetsDir, 'favicon-32x32.png'), width: 32, height: 32 },
-        { path: join(assetsDir, 'favicon-48x48.png'), width: 48, height: 48 },
-        { path: join(assetsDir, 'favicon-64x64.png'), width: 64, height: 64 },
-        { path: join(assetsDir, 'favicon.png'), width: 256, height: 256 }
-      ]
+        { path: join(assetsDir, "favicon-16x16.png"), width: 16, height: 16 },
+        { path: join(assetsDir, "favicon-32x32.png"), width: 32, height: 32 },
+        { path: join(assetsDir, "favicon-48x48.png"), width: 48, height: 48 },
+        { path: join(assetsDir, "favicon-64x64.png"), width: 64, height: 64 },
+        { path: join(assetsDir, "favicon.png"), width: 256, height: 256 },
+      ],
     },
     // Logo conversion
     {
-      input: join(assetsDir, 'logo.svg'),
+      input: join(assetsDir, "logo.svg"),
       outputs: [
-        { path: join(assetsDir, 'logo.png'), width: 400, height: 100 },
-        { path: join(assetsDir, 'logo-2x.png'), width: 800, height: 200 }
-      ]
+        { path: join(assetsDir, "logo.png"), width: 400, height: 100 },
+        { path: join(assetsDir, "logo-2x.png"), width: 800, height: 200 },
+      ],
     },
     // OG Image conversion (for social media sharing)
     {
-      input: join(assetsDir, 'og-image.svg'),
+      input: join(assetsDir, "og-image.svg"),
       outputs: [
-        { path: join(assetsDir, 'og-image.png'), width: 1200, height: 630 }
-      ]
-    }
+        { path: join(assetsDir, "og-image.png"), width: 1200, height: 630 },
+      ],
+    },
   ];
 
   let successCount = 0;
@@ -93,12 +93,14 @@ async function main() {
 
       for (const output of conversion.outputs) {
         try {
-          console.log(`  ↳ Converting to ${output.path} (${output.width}x${output.height})...`);
+          console.log(
+            `  ↳ Converting to ${output.path} (${output.width}x${output.height})...`,
+          );
 
           const pngBuffer = await convertSvgToPng(
             svgBuffer,
             output.width,
-            output.height
+            output.height,
           );
 
           // Ensure directory exists
@@ -110,18 +112,21 @@ async function main() {
           console.log(`  ✅ Created ${output.path}`);
           successCount++;
         } catch (error) {
-          console.error(`  ❌ Failed to convert ${output.path}:`, error.message);
+          console.error(
+            `  ❌ Failed to convert ${output.path}:`,
+            error.message,
+          );
           errorCount++;
         }
       }
-      console.log('');
+      console.log("");
     } catch (error) {
       console.error(`❌ Failed to read ${conversion.input}:`, error.message);
       errorCount++;
     }
   }
 
-  console.log('━'.repeat(50));
+  console.log("━".repeat(50));
   console.log(`✨ Conversion complete!`);
   console.log(`   Success: ${successCount} files`);
   if (errorCount > 0) {
@@ -132,6 +137,6 @@ async function main() {
 
 // Run the conversion
 main().catch((error) => {
-  console.error('💥 Fatal error:', error);
+  console.error("💥 Fatal error:", error);
   process.exit(1);
 });

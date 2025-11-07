@@ -69,6 +69,7 @@ When modifying assets:
 ## Asset Usage
 
 ### In HTML
+
 ```html
 <!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -79,6 +80,7 @@ When modifying assets:
 ```
 
 ### In Documentation
+
 ```markdown
 ![Parse DMARC Logo](./assets/logo.svg)
 ```
@@ -86,12 +88,14 @@ When modifying assets:
 ## Troubleshooting
 
 **PNGs not generating?**
+
 1. Ensure Node.js v18+ is installed
 2. Run `npm install` to install sharp
 3. Check that SVG files are valid
 4. Run the conversion script manually: `node scripts/convert-svg-to-png.js`
 
 **Icons not displaying?**
+
 1. Clear browser cache
 2. Rebuild the frontend: `cd frontend && npm run build`
 3. Check that publicDir is configured in `vite.config.js`

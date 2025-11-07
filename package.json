@@ -30,9 +30,9 @@
   },
   "scripts": {
     "build": "vite build",
-    "convert-assets": "node scripts/convert-svg-to-png.js",
+    "convert-assets": "./scripts/convert-svg-to-png.js",
     "dev": "vite",
-    "prebuild": "npm run convert-assets",
+    "prebuild": "bun run convert-assets",
     "preview": "vite preview"
   },
   "type": "module",

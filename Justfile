@@ -30,7 +30,7 @@ build-cgo: frontend backend-cgo
 
 dev:
     @echo "Starting development server..."
-    go run ./cmd/parse-dmarc -config=config.json
+    air
 
 config:
     go run ./cmd/parse-dmarc -gen-config

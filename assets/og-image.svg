@@ -42,8 +42,8 @@
 
   <!-- Email icon elements -->
   <g transform="translate(850, 280)" opacity="0.3">
-    <rect x="0" y="0" width="150" height="100" rx="10" fill="none" stroke="#ffffff" stroke-width="4"/>
-    <path d="M 0 0 L 75 50 L 150 0" fill="none" stroke="#ffffff" stroke-width="4" stroke-linejoin="round"/>
+    <rect x="0" y="0" width="140" height="80" rx="10" fill="none" stroke="#ffffff" stroke-width="4"/>
+    <path d="M 0 3 L 70 50 L 140 3" fill="none" stroke="#ffffff" stroke-width="4" stroke-linejoin="round"/>
   </g>
 
   <!-- Main text content -->
