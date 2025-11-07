@@ -22,6 +22,37 @@
       </div>
     </header>
 
+    <!-- Star Banner -->
+    <div v-if="starBannerVisible" class="star-banner">
+      <div class="container">
+        <div class="star-banner-content">
+          <div class="star-banner-text">
+            <span class="star-banner-icon">⭐</span>
+            <span class="star-banner-message">
+              <strong>Self-hosting Parse DMARC?</strong> Support open-source email security! Give us a star on GitHub and help others discover this tool.
+            </span>
+          </div>
+          <div class="star-banner-actions">
+            <a
+              href="https://github.com/meysam81/parse-dmarc"
+              target="_blank"
+              rel="noopener"
+              class="star-button"
+            >
+              ⭐ Star on GitHub
+            </a>
+            <button
+              class="dismiss-button"
+              @click="dismissStarBanner"
+              title="Dismiss"
+            >
+              ×
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <main class="main">
       <div class="container">
         <!-- Statistics Cards -->
@@ -347,6 +378,7 @@ export default {
     var loading = ref(true);
     var sortColumn = ref(null);
     var sortDirection = ref("asc");
+    var starBannerVisible = ref(true);
 
     function fetchStatistics() {
       return fetch("/api/statistics")
@@ -491,7 +523,33 @@ export default {
       return sorted;
     });
 
+    function dismissStarBanner() {
+      starBannerVisible.value = false;
+      var dismissalData = {
+        dismissed: true,
+        timestamp: Date.now(),
+      };
+      localStorage.setItem("starBannerDismissed", JSON.stringify(dismissalData));
+    }
+
+    function checkStarBannerDismissal() {
+      var dismissalData = localStorage.getItem("starBannerDismissed");
+      if (dismissalData) {
+        try {
+          var data = JSON.parse(dismissalData);
+          var thirtyDaysInMs = 30 * 24 * 60 * 60 * 1000;
+          var timeSinceDismissal = Date.now() - data.timestamp;
+          if (timeSinceDismissal < thirtyDaysInMs) {
+            starBannerVisible.value = false;
+          }
+        } catch (e) {
+          console.error("Failed to parse star banner dismissal data:", e);
+        }
+      }
+    }
+
     onMounted(function () {
+      checkStarBannerDismissal();
       loadData();
       setInterval(loadData, 5 * 60 * 1000);
     });
@@ -505,6 +563,7 @@ export default {
       sortColumn,
       sortDirection,
       sortedReports,
+      starBannerVisible,
       viewReport,
       closeModal,
       formatNumber,
@@ -515,6 +574,7 @@ export default {
       sortBy,
       getSortIndicator,
       refreshData,
+      dismissStarBanner,
     };
   },
 };
@@ -610,6 +670,120 @@ export default {
   to {
     transform: rotate(360deg);
   }
+}
+
+.star-banner {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 215, 0, 0.15),
+    rgba(255, 165, 0, 0.15)
+  );
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+  animation: slideDown 0.5s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.star-banner-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1rem 0;
+  flex-wrap: wrap;
+}
+
+.star-banner-text {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+  min-width: 300px;
+}
+
+.star-banner-icon {
+  font-size: 2rem;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.star-banner-message {
+  color: white;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.star-banner-message strong {
+  font-weight: 600;
+  color: #ffd700;
+}
+
+.star-banner-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.star-button {
+  background: linear-gradient(135deg, #ffd700, #ffed4e);
+  color: #333;
+  padding: 0.65rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s;
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+  white-space: nowrap;
+}
+
+.star-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255, 215, 0, 0.4);
+  background: linear-gradient(135deg, #ffed4e, #ffd700);
+}
+
+.dismiss-button {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 0.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 6px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  line-height: 1;
+}
+
+.dismiss-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
 }
 
 .main {
@@ -1060,6 +1234,26 @@ code {
 
   .refresh-button {
     width: 100%;
+    justify-content: center;
+  }
+
+  .star-banner-content {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .star-banner-text {
+    min-width: auto;
+  }
+
+  .star-banner-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .star-button {
+    flex: 1;
     justify-content: center;
   }
 
