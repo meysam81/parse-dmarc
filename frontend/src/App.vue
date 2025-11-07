@@ -714,6 +714,7 @@ export default {
 .star-banner-icon {
   font-size: 2rem;
   animation: pulse 2s ease-in-out infinite;
+  will-change: transform;
 }
 
 @keyframes pulse {
