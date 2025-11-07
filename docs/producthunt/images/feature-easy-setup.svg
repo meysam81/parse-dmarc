@@ -1,0 +1,142 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Easy setup illustration -->
+  <defs>
+    <linearGradient id="termGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1F2937"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Title -->
+  <text x="400" y="50" font-family="'Inter', sans-serif" font-size="36" font-weight="600" fill="#1F2937" text-anchor="middle">
+    2-Minute Setup
+  </text>
+
+  <!-- Step indicators -->
+  <g transform="translate(100, 100)">
+    <!-- Step 1 -->
+    <g>
+      <circle cx="0" cy="0" r="30" fill="#3B82F6" stroke="#2563EB" stroke-width="2"/>
+      <text x="0" y="10" font-family="'Inter', sans-serif" font-size="24" fill="#FFFFFF" text-anchor="middle" font-weight="700">
+        1
+      </text>
+      <text x="50" y="10" font-family="'Inter', sans-serif" font-size="20" fill="#1F2937" font-weight="600">
+        Add DNS Record
+      </text>
+
+      <!-- DNS record example -->
+      <g transform="translate(50, 30)">
+        <rect x="0" y="0" width="550" height="80" rx="8" fill="#F3F4F6" stroke="#D1D5DB" stroke-width="2"/>
+        <text x="15" y="25" font-family="'Monaco', 'Courier New', monospace" font-size="13" fill="#059669" font-weight="600">
+          Type:
+        </text>
+        <text x="80" y="25" font-family="'Monaco', 'Courier New', monospace" font-size="13" fill="#1F2937">
+          TXT
+        </text>
+
+        <text x="15" y="45" font-family="'Monaco', 'Courier New', monospace" font-size="13" fill="#059669" font-weight="600">
+          Name:
+        </text>
+        <text x="80" y="45" font-family="'Monaco', 'Courier New', monospace" font-size="13" fill="#1F2937">
+          _dmarc.yourdomain.com
+        </text>
+
+        <text x="15" y="65" font-family="'Monaco', 'Courier New', monospace" font-size="13" fill="#059669" font-weight="600">
+          Value:
+        </text>
+        <text x="80" y="65" font-family="'Monaco', 'Courier New', monospace" font-size="13" fill="#1F2937">
+          v=DMARC1; p=none; rua=mailto:dmarc@yourdomain.com
+        </text>
+      </g>
+    </g>
+
+    <!-- Step 2 -->
+    <g transform="translate(0, 160)">
+      <circle cx="0" cy="0" r="30" fill="#3B82F6" stroke="#2563EB" stroke-width="2"/>
+      <text x="0" y="10" font-family="'Inter', sans-serif" font-size="24" fill="#FFFFFF" text-anchor="middle" font-weight="700">
+        2
+      </text>
+      <text x="50" y="10" font-family="'Inter', sans-serif" font-size="20" fill="#1F2937" font-weight="600">
+        Run Docker Container
+      </text>
+
+      <!-- Terminal window -->
+      <g transform="translate(50, 30)">
+        <rect x="0" y="0" width="550" height="120" rx="8" fill="url(#termGrad)" stroke="#374151" stroke-width="2"/>
+
+        <!-- Terminal chrome -->
+        <circle cx="20" cy="20" r="6" fill="#EF4444"/>
+        <circle cx="40" cy="20" r="6" fill="#F59E0B"/>
+        <circle cx="60" cy="20" r="6" fill="#10B981"/>
+
+        <!-- Terminal text -->
+        <text x="15" y="55" font-family="'Monaco', 'Courier New', monospace" font-size="13" fill="#10B981">
+          $ docker run -d \
+        </text>
+        <text x="35" y="75" font-family="'Monaco', 'Courier New', monospace" font-size="13" fill="#60A5FA">
+          --name parse-dmarc \
+        </text>
+        <text x="35" y="95" font-family="'Monaco', 'Courier New', monospace" font-size="13" fill="#60A5FA">
+          -p 8080:8080 \
+        </text>
+        <text x="35" y="115" font-family="'Monaco', 'Courier New', monospace" font-size="13" fill="#F59E0B">
+          ghcr.io/meysam81/parse-dmarc:latest
+        </text>
+      </g>
+    </g>
+
+    <!-- Step 3 -->
+    <g transform="translate(0, 340)">
+      <circle cx="0" cy="0" r="30" fill="#10B981" stroke="#059669" stroke-width="2"/>
+      <text x="0" y="10" font-family="'Inter', sans-serif" font-size="24" fill="#FFFFFF" text-anchor="middle" font-weight="700">
+        ✓
+      </text>
+      <text x="50" y="10" font-family="'Inter', sans-serif" font-size="20" fill="#1F2937" font-weight="600">
+        Open Dashboard
+      </text>
+
+      <!-- Browser bar -->
+      <g transform="translate(50, 30)">
+        <rect x="0" y="0" width="550" height="50" rx="8" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="2"/>
+
+        <!-- Browser controls -->
+        <circle cx="20" cy="25" r="6" fill="#F3F4F6"/>
+        <circle cx="40" cy="25" r="6" fill="#F3F4F6"/>
+        <circle cx="60" cy="25" r="6" fill="#F3F4F6"/>
+
+        <!-- URL bar -->
+        <rect x="90" y="12" width="440" height="26" rx="13" fill="#F3F4F6" stroke="#D1D5DB" stroke-width="1"/>
+        <text x="110" y="31" font-family="'Inter', sans-serif" font-size="16" fill="#1F2937">
+          http://localhost:8080
+        </text>
+
+        <!-- Green checkmark -->
+        <circle cx="500" cy="25" r="12" fill="#10B981"/>
+        <path d="M495,25 L498,28 L505,21"
+              stroke="#FFFFFF"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              fill="none"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- Time indicator -->
+  <g transform="translate(400, 520)">
+    <circle cx="0" cy="0" r="50" fill="#EFF6FF" stroke="#3B82F6" stroke-width="3"/>
+    <circle cx="0" cy="0" r="3" fill="#3B82F6"/>
+    <!-- Clock hand -->
+    <line x1="0" y1="0" x2="0" y2="-25" stroke="#3B82F6" stroke-width="3" stroke-linecap="round"/>
+    <line x1="0" y1="0" x2="15" y2="10" stroke="#3B82F6" stroke-width="2" stroke-linecap="round"/>
+
+    <text x="0" y="80" font-family="'Inter', sans-serif" font-size="24" fill="#3B82F6" text-anchor="middle" font-weight="700">
+      &lt; 2 minutes
+    </text>
+  </g>
+
+  <!-- Bottom note -->
+  <text x="400" y="570" font-family="'Inter', sans-serif" font-size="16" fill="#6B7280" text-anchor="middle" font-style="italic">
+    No complex configuration. No hours reading docs. Just works.
+  </text>
+</svg>

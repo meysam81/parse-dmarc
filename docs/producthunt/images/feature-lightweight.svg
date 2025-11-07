@@ -1,0 +1,178 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Lightweight architecture comparison -->
+  <defs>
+    <linearGradient id="bloatGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FEE2E2"/>
+      <stop offset="100%" stop-color="#FECACA"/>
+    </linearGradient>
+    <linearGradient id="leanGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#D1FAE5"/>
+      <stop offset="100%" stop-color="#A7F3D0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Title -->
+  <text x="400" y="50" font-family="'Inter', sans-serif" font-size="36" font-weight="600" fill="#1F2937" text-anchor="middle">
+    Ridiculously Lightweight
+  </text>
+
+  <!-- Comparison section -->
+  <g transform="translate(0, 100)">
+    <!-- Traditional Stack (left) -->
+    <g transform="translate(50, 0)">
+      <text x="150" y="0" font-family="'Inter', sans-serif" font-size="24" fill="#EF4444" text-anchor="middle" font-weight="600">
+        Traditional Stack
+      </text>
+
+      <!-- Heavy stack visualization -->
+      <g transform="translate(0, 30)">
+        <!-- Python layer -->
+        <rect x="20" y="0" width="260" height="60" rx="8" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+        <text x="40" y="25" font-family="'Inter', sans-serif" font-size="14" fill="#92400E" font-weight="600">
+          Python Runtime
+        </text>
+        <text x="40" y="45" font-family="'Inter', sans-serif" font-size="12" fill="#B45309">
+          Dependencies, virtualenv, pip packages
+        </text>
+
+        <!-- Elasticsearch layer -->
+        <rect x="20" y="70" width="260" height="60" rx="8" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+        <text x="40" y="95" font-family="'Inter', sans-serif" font-size="14" fill="#92400E" font-weight="600">
+          Elasticsearch
+        </text>
+        <text x="40" y="115" font-family="'Inter', sans-serif" font-size="12" fill="#B45309">
+          JVM, cluster config, heap memory
+        </text>
+
+        <!-- Kibana layer -->
+        <rect x="20" y="140" width="260" height="60" rx="8" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+        <text x="40" y="165" font-family="'Inter', sans-serif" font-size="14" fill="#92400E" font-weight="600">
+          Kibana
+        </text>
+        <text x="40" y="185" font-family="'Inter', sans-serif" font-size="12" fill="#B45309">
+          Separate frontend, configuration
+        </text>
+
+        <!-- Web Server layer -->
+        <rect x="20" y="210" width="260" height="60" rx="8" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+        <text x="40" y="235" font-family="'Inter', sans-serif" font-size="14" fill="#92400E" font-weight="600">
+          Web Server (nginx)
+        </text>
+        <text x="40" y="255" font-family="'Inter', sans-serif" font-size="12" fill="#B45309">
+          Reverse proxy configuration
+        </text>
+      </g>
+
+      <!-- Size indicator -->
+      <g transform="translate(0, 300)">
+        <rect x="20" y="0" width="260" height="50" rx="8" fill="url(#bloatGrad)" stroke="#EF4444" stroke-width="2"/>
+        <text x="150" y="22" font-family="'Inter', sans-serif" font-size="16" fill="#991B1B" text-anchor="middle" font-weight="700">
+          Total Size:
+        </text>
+        <text x="150" y="42" font-family="'Inter', sans-serif" font-size="20" fill="#EF4444" text-anchor="middle" font-weight="700">
+          ~2GB+
+        </text>
+      </g>
+
+      <!-- Pain points -->
+      <g transform="translate(20, 370)">
+        <text x="0" y="0" font-family="'Inter', sans-serif" font-size="13" fill="#6B7280">
+          ✗ Hours of setup time
+        </text>
+        <text x="0" y="20" font-family="'Inter', sans-serif" font-size="13" fill="#6B7280">
+          ✗ Complex configuration
+        </text>
+        <text x="0" y="40" font-family="'Inter', sans-serif" font-size="13" fill="#6B7280">
+          ✗ High memory usage
+        </text>
+        <text x="0" y="60" font-family="'Inter', sans-serif" font-size="13" fill="#6B7280">
+          ✗ Multiple services to manage
+        </text>
+      </g>
+    </g>
+
+    <!-- VS indicator -->
+    <g transform="translate(375, 200)">
+      <text x="0" y="0" font-family="'Inter', sans-serif" font-size="32" fill="#9CA3AF" text-anchor="middle" font-weight="700">
+        VS
+      </text>
+    </g>
+
+    <!-- Parse DMARC (right) -->
+    <g transform="translate(490, 0)">
+      <text x="150" y="0" font-family="'Inter', sans-serif" font-size="24" fill="#10B981" text-anchor="middle" font-weight="600">
+        Parse DMARC
+      </text>
+
+      <!-- Single layer -->
+      <g transform="translate(0, 30)">
+        <!-- Single binary -->
+        <rect x="20" y="0" width="260" height="270" rx="8" fill="#D1FAE5" stroke="#10B981" stroke-width="3"/>
+
+        <g transform="translate(130, 40)">
+          <!-- Docker container icon -->
+          <rect x="-40" y="0" width="80" height="60" rx="6" fill="#3B82F6" opacity="0.2"/>
+          <circle cx="0" cy="30" r="8" fill="#3B82F6"/>
+          <circle cx="-20" cy="20" r="6" fill="#3B82F6" opacity="0.6"/>
+          <circle cx="20" cy="20" r="6" fill="#3B82F6" opacity="0.6"/>
+          <circle cx="-20" cy="40" r="6" fill="#3B82F6" opacity="0.6"/>
+          <circle cx="20" cy="40" r="6" fill="#3B82F6" opacity="0.6"/>
+        </g>
+
+        <text x="130" y="130" font-family="'Inter', sans-serif" font-size="16" fill="#065F46" text-anchor="middle" font-weight="600">
+          Single Binary
+        </text>
+
+        <g transform="translate(40, 150)">
+          <text x="0" y="0" font-family="'Inter', sans-serif" font-size="13" fill="#047857">
+            • Go backend (embedded)
+          </text>
+          <text x="0" y="20" font-family="'Inter', sans-serif" font-size="13" fill="#047857">
+            • Vue.js frontend (embedded)
+          </text>
+          <text x="0" y="40" font-family="'Inter', sans-serif" font-size="13" fill="#047857">
+            • SQLite database (embedded)
+          </text>
+          <text x="0" y="60" font-family="'Inter', sans-serif" font-size="13" fill="#047857">
+            • HTTP server (embedded)
+          </text>
+          <text x="0" y="80" font-family="'Inter', sans-serif" font-size="13" fill="#047857">
+            • Zero dependencies
+          </text>
+        </g>
+      </g>
+
+      <!-- Size indicator -->
+      <g transform="translate(0, 300)">
+        <rect x="20" y="0" width="260" height="50" rx="8" fill="url(#leanGrad)" stroke="#10B981" stroke-width="2"/>
+        <text x="150" y="22" font-family="'Inter', sans-serif" font-size="16" fill="#065F46" text-anchor="middle" font-weight="700">
+          Total Size:
+        </text>
+        <text x="150" y="42" font-family="'Inter', sans-serif" font-size="20" fill="#10B981" text-anchor="middle" font-weight="700">
+          14MB
+        </text>
+      </g>
+
+      <!-- Benefits -->
+      <g transform="translate(20, 370)">
+        <text x="0" y="0" font-family="'Inter', sans-serif" font-size="13" fill="#065F46">
+          ✓ 30-second setup
+        </text>
+        <text x="0" y="20" font-family="'Inter', sans-serif" font-size="13" fill="#065F46">
+          ✓ Single docker run command
+        </text>
+        <text x="0" y="40" font-family="'Inter', sans-serif" font-size="13" fill="#065F46">
+          ✓ Minimal memory footprint
+        </text>
+        <text x="0" y="60" font-family="'Inter', sans-serif" font-size="13" fill="#065F46">
+          ✓ Just works™
+        </text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Bottom tagline -->
+  <text x="400" y="560" font-family="'Inter', sans-serif" font-size="20" fill="#3B82F6" text-anchor="middle" font-weight="600" font-style="italic">
+    143x smaller • Infinitely simpler
+  </text>
+</svg>

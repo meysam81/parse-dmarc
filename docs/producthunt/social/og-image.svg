@@ -1,0 +1,116 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Open Graph / Facebook Card (1.91:1 ratio) -->
+  <defs>
+    <linearGradient id="ogBg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="50%" stop-color="#1E3A8A"/>
+      <stop offset="100%" stop-color="#2563EB"/>
+    </linearGradient>
+    <radialGradient id="spotlight" cx="0.5" cy="0.5">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#ogBg)"/>
+
+  <!-- Spotlight effect -->
+  <ellipse cx="600" cy="315" rx="600" ry="400" fill="url(#spotlight)"/>
+
+  <!-- Floating elements background -->
+  <g opacity="0.1">
+    <circle cx="150" cy="120" r="80" fill="#60A5FA"/>
+    <circle cx="1050" cy="500" r="100" fill="#3B82F6"/>
+    <rect x="900" y="100" width="60" height="60" rx="8" fill="#DBEAFE" transform="rotate(15 930 130)"/>
+    <rect x="200" y="480" width="50" height="50" rx="8" fill="#DBEAFE" transform="rotate(-20 225 505)"/>
+  </g>
+
+  <!-- Main content -->
+  <g transform="translate(600, 315)">
+    <!-- Central icon (larger) -->
+    <g transform="translate(-80, -100) scale(0.8)">
+      <path d="M100 0L20 40V125C20 185 55 230 100 250C145 230 180 185 180 125V40L100 0Z"
+            fill="#60A5FA"
+            opacity="0.95"/>
+      <path d="M100 0L20 40V125C20 185 55 230 100 250C145 230 180 185 180 125V40L100 0Z"
+            fill="none"
+            stroke="#FFFFFF"
+            stroke-width="3"
+            opacity="0.5"/>
+      <rect x="54" y="87" width="92" height="66" rx="6"
+            fill="#FFFFFF"
+            stroke="#3B82F6"
+            stroke-width="3"/>
+      <path d="M54 93L100 125L146 93"
+            stroke="#3B82F6"
+            stroke-width="5"
+            stroke-linecap="round"
+            fill="none"/>
+      <path d="M80 118L90 128L120 98"
+            stroke="#10B981"
+            stroke-width="6"
+            stroke-linecap="round"
+            fill="none"/>
+    </g>
+
+    <!-- Title -->
+    <text x="0" y="-10" font-family="'Inter', sans-serif" font-size="72" font-weight="700" fill="#FFFFFF" text-anchor="middle" letter-spacing="-1">
+      Parse DMARC
+    </text>
+
+    <!-- Subtitle -->
+    <text x="0" y="45" font-family="'Inter', sans-serif" font-size="32" fill="#DBEAFE" text-anchor="middle" font-weight="400">
+      Email Security, Simplified
+    </text>
+
+    <!-- Divider line -->
+    <line x1="-200" y1="75" x2="200" y2="75" stroke="#60A5FA" stroke-width="2" opacity="0.5"/>
+
+    <!-- Key value props -->
+    <g transform="translate(0, 130)">
+      <text x="0" y="0" font-family="'Inter', sans-serif" font-size="28" fill="#FFFFFF" text-anchor="middle" font-weight="600">
+        Stop email spoofing • 14MB Docker image • Zero config
+      </text>
+    </g>
+
+    <!-- Visual features -->
+    <g transform="translate(-350, 180)">
+      <!-- Feature 1 -->
+      <g>
+        <circle cx="0" cy="0" r="40" fill="#FFFFFF" opacity="0.15"/>
+        <text x="0" y="10" font-family="'Inter', sans-serif" font-size="32" text-anchor="middle">📧</text>
+        <text x="0" y="60" font-family="'Inter', sans-serif" font-size="16" fill="#DBEAFE" text-anchor="middle">
+          Auto-fetch
+        </text>
+      </g>
+
+      <!-- Feature 2 -->
+      <g transform="translate(230, 0)">
+        <circle cx="0" cy="0" r="40" fill="#FFFFFF" opacity="0.15"/>
+        <text x="0" y="10" font-family="'Inter', sans-serif" font-size="32" text-anchor="middle">📊</text>
+        <text x="0" y="60" font-family="'Inter', sans-serif" font-size="16" fill="#DBEAFE" text-anchor="middle">
+          Dashboard
+        </text>
+      </g>
+
+      <!-- Feature 3 -->
+      <g transform="translate(460, 0)">
+        <circle cx="0" cy="0" r="40" fill="#FFFFFF" opacity="0.15"/>
+        <text x="0" y="10" font-family="'Inter', sans-serif" font-size="32" text-anchor="middle">🔒</text>
+        <text x="0" y="60" font-family="'Inter', sans-serif" font-size="16" fill="#DBEAFE" text-anchor="middle">
+          Self-hosted
+        </text>
+      </g>
+
+      <!-- Feature 4 -->
+      <g transform="translate(690, 0)">
+        <circle cx="0" cy="0" r="40" fill="#FFFFFF" opacity="0.15"/>
+        <text x="0" y="10" font-family="'Inter', sans-serif" font-size="32" text-anchor="middle">⚡</text>
+        <text x="0" y="60" font-family="'Inter', sans-serif" font-size="16" fill="#DBEAFE" text-anchor="middle">
+          Lightweight
+        </text>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,58 @@
+<svg width="1200" height="300" viewBox="0 0 1200 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Full logo with icon + wordmark -->
+  <defs>
+    <linearGradient id="shieldGrad" x1="150" y1="40" x2="150" y2="260" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#1D4ED8"/>
+    </linearGradient>
+    <linearGradient id="textGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1F2937"/>
+      <stop offset="100%" stop-color="#374151"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Shield Icon (same as icon version, scaled) -->
+  <g transform="translate(0, 0) scale(0.6)">
+    <path d="M150 40L50 76V150C50 207 87 254 150 273C213 254 250 207 250 150V76L150 40Z"
+          fill="url(#shieldGrad)"/>
+    <path d="M150 40L50 76V150C50 207 87 254 150 273C213 254 250 207 250 150V76L150 40Z"
+          fill="none"
+          stroke="#1E3A8A"
+          stroke-width="2"
+          opacity="0.3"/>
+    <rect x="94" y="117" width="112" height="80" rx="4"
+          fill="#60A5FA"
+          stroke="#FFFFFF"
+          stroke-width="3"/>
+    <path d="M94 122L150 160L206 122"
+          stroke="#FFFFFF"
+          stroke-width="4"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          fill="none"/>
+    <path d="M129 157L141 169L171 139"
+          stroke="#10B981"
+          stroke-width="6"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          fill="none"/>
+  </g>
+
+  <!-- "Parse" text -->
+  <text x="200" y="180" font-family="'Inter', 'Helvetica', sans-serif" font-size="110" font-weight="700" fill="#1F2937" letter-spacing="-2">
+    Parse
+  </text>
+
+  <!-- "DMARC" text -->
+  <text x="490" y="180" font-family="'Inter', 'Helvetica', sans-serif" font-size="110" font-weight="300" fill="#3B82F6" letter-spacing="-2">
+    DMARC
+  </text>
+
+  <!-- Tagline -->
+  <text x="200" y="220" font-family="'Inter', 'Helvetica', sans-serif" font-size="28" font-weight="400" fill="#6B7280" letter-spacing="0.5">
+    Email Security, Simplified
+  </text>
+
+  <!-- Subtle decorative line -->
+  <line x1="200" y1="235" x2="520" y2="235" stroke="#3B82F6" stroke-width="2" opacity="0.3"/>
+</svg>

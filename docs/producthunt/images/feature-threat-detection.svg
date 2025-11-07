@@ -1,0 +1,150 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Threat detection feature illustration -->
+  <defs>
+    <linearGradient id="dangerGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FEE2E2"/>
+      <stop offset="100%" stop-color="#FECACA"/>
+    </linearGradient>
+    <linearGradient id="safeGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#D1FAE5"/>
+      <stop offset="100%" stop-color="#A7F3D0"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Title -->
+  <text x="400" y="60" font-family="'Inter', sans-serif" font-size="36" font-weight="600" fill="#1F2937" text-anchor="middle">
+    Spot Threats Instantly
+  </text>
+
+  <!-- Center shield with scanning effect -->
+  <g transform="translate(400, 250)">
+    <!-- Large shield -->
+    <path d="M0,-80 L-60,-50 L-60,20 C-60,70 -30,100 0,110 C30,100 60,70 60,20 L60,-50 Z"
+          fill="#3B82F6"
+          opacity="0.1"
+          stroke="#3B82F6"
+          stroke-width="3"/>
+
+    <!-- Scanning rings -->
+    <circle cx="0" cy="10" r="40" fill="none" stroke="#3B82F6" stroke-width="2" opacity="0.4" stroke-dasharray="4 4"/>
+    <circle cx="0" cy="10" r="60" fill="none" stroke="#3B82F6" stroke-width="2" opacity="0.2" stroke-dasharray="4 4"/>
+    <circle cx="0" cy="10" r="80" fill="none" stroke="#3B82F6" stroke-width="2" opacity="0.1" stroke-dasharray="4 4"/>
+
+    <!-- Center icon -->
+    <circle cx="0" cy="10" r="25" fill="#3B82F6"/>
+    <path d="M-8,10 L-3,15 L10,2"
+          stroke="#FFFFFF"
+          stroke-width="3"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          fill="none"/>
+  </g>
+
+  <!-- Legitimate sender (top left) -->
+  <g transform="translate(120, 120)">
+    <rect x="0" y="0" width="160" height="80" rx="8" fill="url(#safeGrad)" stroke="#10B981" stroke-width="2"/>
+    <circle cx="30" cy="40" r="18" fill="#10B981" opacity="0.3"/>
+    <path d="M23,40 L28,45 L38,35"
+          stroke="#10B981"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          fill="none"/>
+    <text x="60" y="30" font-family="'Inter', sans-serif" font-size="14" fill="#065F46" font-weight="600">
+      Google Mail
+    </text>
+    <text x="60" y="48" font-family="'Inter', sans-serif" font-size="11" fill="#047857">
+      SPF: ✓ Pass
+    </text>
+    <text x="60" y="62" font-family="'Inter', sans-serif" font-size="11" fill="#047857">
+      DKIM: ✓ Pass
+    </text>
+  </g>
+
+  <!-- Suspicious sender (top right) -->
+  <g transform="translate(520, 120)">
+    <rect x="0" y="0" width="160" height="80" rx="8" fill="url(#dangerGrad)" stroke="#EF4444" stroke-width="2" filter="url(#glow)"/>
+    <circle cx="30" cy="40" r="18" fill="#EF4444" opacity="0.3"/>
+    <path d="M30,30 L30,45 M30,52 L30,55"
+          stroke="#EF4444"
+          stroke-width="3"
+          stroke-linecap="round"/>
+    <text x="60" y="30" font-family="'Inter', sans-serif" font-size="14" fill="#991B1B" font-weight="600">
+      Unknown IP
+    </text>
+    <text x="60" y="48" font-family="'Inter', sans-serif" font-size="11" fill="#B91C1C">
+      SPF: ✗ Fail
+    </text>
+    <text x="60" y="62" font-family="'Inter', sans-serif" font-size="11" fill="#B91C1C">
+      DKIM: ✗ Fail
+    </text>
+  </g>
+
+  <!-- Another legitimate (bottom left) -->
+  <g transform="translate(120, 370)">
+    <rect x="0" y="0" width="160" height="80" rx="8" fill="url(#safeGrad)" stroke="#10B981" stroke-width="2"/>
+    <circle cx="30" cy="40" r="18" fill="#10B981" opacity="0.3"/>
+    <path d="M23,40 L28,45 L38,35"
+          stroke="#10B981"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          fill="none"/>
+    <text x="60" y="30" font-family="'Inter', sans-serif" font-size="14" fill="#065F46" font-weight="600">
+      Mailchimp
+    </text>
+    <text x="60" y="48" font-family="'Inter', sans-serif" font-size="11" fill="#047857">
+      SPF: ✓ Pass
+    </text>
+    <text x="60" y="62" font-family="'Inter', sans-serif" font-size="11" fill="#047857">
+      DKIM: ✓ Pass
+    </text>
+  </g>
+
+  <!-- Another suspicious (bottom right) -->
+  <g transform="translate(520, 370)">
+    <rect x="0" y="0" width="160" height="80" rx="8" fill="url(#dangerGrad)" stroke="#EF4444" stroke-width="2" filter="url(#glow)"/>
+    <circle cx="30" cy="40" r="18" fill="#EF4444" opacity="0.3"/>
+    <path d="M30,30 L30,45 M30,52 L30,55"
+          stroke="#EF4444"
+          stroke-width="3"
+          stroke-linecap="round"/>
+    <text x="60" y="30" font-family="'Inter', sans-serif" font-size="14" fill="#991B1B" font-weight="600">
+      Phishing
+    </text>
+    <text x="60" y="48" font-family="'Inter', sans-serif" font-size="11" fill="#B91C1C">
+      SPF: ✗ Fail
+    </text>
+    <text x="60" y="62" font-family="'Inter', sans-serif" font-size="11" fill="#B91C1C">
+      DKIM: ✗ Fail
+    </text>
+  </g>
+
+  <!-- Connection lines to center -->
+  <line x1="200" y1="160" x2="360" y2="230" stroke="#10B981" stroke-width="2" opacity="0.3"/>
+  <line x1="600" y1="160" x2="440" y2="230" stroke="#EF4444" stroke-width="2" opacity="0.3" stroke-dasharray="4 4"/>
+  <line x1="200" y1="410" x2="360" y2="280" stroke="#10B981" stroke-width="2" opacity="0.3"/>
+  <line x1="600" y1="410" x2="440" y2="280" stroke="#EF4444" stroke-width="2" opacity="0.3" stroke-dasharray="4 4"/>
+
+  <!-- Alert box at bottom -->
+  <g transform="translate(200, 500)">
+    <rect x="0" y="0" width="400" height="60" rx="8" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+    <circle cx="20" cy="30" r="12" fill="#F59E0B"/>
+    <text x="18" y="37" font-family="'Inter', sans-serif" font-size="20" fill="#FFFFFF" font-weight="bold">
+      !
+    </text>
+    <text x="45" y="25" font-family="'Inter', sans-serif" font-size="16" fill="#92400E" font-weight="600">
+      2 unauthorized senders detected
+    </text>
+    <text x="45" y="45" font-family="'Inter', sans-serif" font-size="13" fill="#B45309">
+      Review failed authentication attempts →
+    </text>
+  </g>
+</svg>

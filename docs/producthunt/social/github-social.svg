@@ -1,0 +1,123 @@
+<svg width="1280" height="640" viewBox="0 0 1280 640" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- GitHub Social Preview (2:1 ratio) -->
+  <defs>
+    <linearGradient id="ghBg" x1="0" y1="0" x2="1280" y2="640" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0D1117"/>
+      <stop offset="100%" stop-color="#161B22"/>
+    </linearGradient>
+    <linearGradient id="ghAccent" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#2563EB"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1280" height="640" fill="url(#ghBg)"/>
+
+  <!-- Grid overlay -->
+  <g opacity="0.05">
+    <pattern id="ghGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#FFFFFF" stroke-width="0.5"/>
+    </pattern>
+    <rect width="1280" height="640" fill="url(#ghGrid)"/>
+  </g>
+
+  <!-- Content -->
+  <g transform="translate(100, 140)">
+    <!-- Icon -->
+    <g transform="scale(0.6)">
+      <path d="M100 30L30 66V140C30 187 60 227 100 243C140 227 170 187 170 140V66L100 30Z"
+            fill="url(#ghAccent)"/>
+      <rect x="64" y="107" width="72" height="52" rx="5"
+            fill="#FFFFFF"/>
+      <path d="M64 112L100 138L136 112"
+            stroke="#3B82F6"
+            stroke-width="4"
+            stroke-linecap="round"
+            fill="none"/>
+      <path d="M85 132L93 140L115 118"
+            stroke="#10B981"
+            stroke-width="5"
+            stroke-linecap="round"
+            fill="none"/>
+    </g>
+
+    <!-- Main text -->
+    <g transform="translate(150, 0)">
+      <!-- Repo name style -->
+      <text x="0" y="50" font-family="'Inter', sans-serif" font-size="64" font-weight="600" fill="#58A6FF">
+        meysam81 /
+      </text>
+      <text x="0" y="120" font-family="'Inter', sans-serif" font-size="64" font-weight="700" fill="#FFFFFF">
+        parse-dmarc
+      </text>
+
+      <!-- Description -->
+      <text x="0" y="180" font-family="'Inter', sans-serif" font-size="28" fill="#8B949E" font-weight="400">
+        Monitor who's sending email on behalf of your domain.
+      </text>
+      <text x="0" y="220" font-family="'Inter', sans-serif" font-size="28" fill="#8B949E" font-weight="400">
+        Catch spoofing. Stop phishing. All in a 14MB Docker image.
+      </text>
+
+      <!-- Language & stats -->
+      <g transform="translate(0, 270)">
+        <!-- Go language badge -->
+        <circle cx="8" cy="-5" r="8" fill="#00ADD8"/>
+        <text x="25" y="0" font-family="'Inter', sans-serif" font-size="18" fill="#8B949E">
+          Go
+        </text>
+
+        <!-- Stars -->
+        <g transform="translate(100, 0)">
+          <path d="M8,-10 L10,-4 L16,-4 L11,0 L13,6 L8,2 L3,6 L5,0 L0,-4 L6,-4 Z" fill="#8B949E"/>
+          <text x="25" y="0" font-family="'Inter', sans-serif" font-size="18" fill="#8B949E">
+            Star
+          </text>
+        </g>
+
+        <!-- License -->
+        <text x="200" y="0" font-family="'Inter', sans-serif" font-size="18" fill="#8B949E">
+          Apache-2.0
+        </text>
+      </g>
+
+      <!-- Feature pills -->
+      <g transform="translate(0, 320)">
+        <rect x="0" y="0" width="140" height="36" rx="18" fill="#1F6FEB" opacity="0.2" stroke="#1F6FEB" stroke-width="1"/>
+        <text x="70" y="24" font-family="'Inter', sans-serif" font-size="16" fill="#58A6FF" text-anchor="middle" font-weight="500">
+          Self-hosted
+        </text>
+
+        <rect x="155" y="0" width="140" height="36" rx="18" fill="#1F6FEB" opacity="0.2" stroke="#1F6FEB" stroke-width="1"/>
+        <text x="225" y="24" font-family="'Inter', sans-serif" font-size="16" fill="#58A6FF" text-anchor="middle" font-weight="500">
+          Zero config
+        </text>
+
+        <rect x="310" y="0" width="140" height="36" rx="18" fill="#1F6FEB" opacity="0.2" stroke="#1F6FEB" stroke-width="1"/>
+        <text x="380" y="24" font-family="'Inter', sans-serif" font-size="16" fill="#58A6FF" text-anchor="middle" font-weight="500">
+          SQLite
+        </text>
+
+        <rect x="465" y="0" width="140" height="36" rx="18" fill="#1F6FEB" opacity="0.2" stroke="#1F6FEB" stroke-width="1"/>
+        <text x="535" y="24" font-family="'Inter', sans-serif" font-size="16" fill="#58A6FF" text-anchor="middle" font-weight="500">
+          Vue.js
+        </text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Command at bottom -->
+  <g transform="translate(100, 550)">
+    <rect x="0" y="0" width="1080" height="60" rx="8" fill="#161B22" stroke="#30363D" stroke-width="1"/>
+    <text x="30" y="25" font-family="'Monaco', 'Courier New', monospace" font-size="14" fill="#7EE787">
+      $
+    </text>
+    <text x="55" y="25" font-family="'Monaco', 'Courier New', monospace" font-size="14" fill="#C9D1D9">
+      docker run -p 8080:8080 ghcr.io/meysam81/parse-dmarc:latest
+    </text>
+    <text x="30" y="48" font-family="'Monaco', 'Courier New', monospace" font-size="12" fill="#8B949E">
+      Open http://localhost:8080 to view the dashboard
+    </text>
+  </g>
+</svg>

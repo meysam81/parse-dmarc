@@ -1,0 +1,235 @@
+<svg width="1000" height="800" viewBox="0 0 1000 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Architecture diagram showing how Parse DMARC works -->
+  <defs>
+    <linearGradient id="compGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#EFF6FF"/>
+      <stop offset="100%" stop-color="#DBEAFE"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#3B82F6"/>
+    </marker>
+    <filter id="compShadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+
+  <!-- Title -->
+  <text x="500" y="40" font-family="'Inter', sans-serif" font-size="32" font-weight="600" fill="#1F2937" text-anchor="middle">
+    Architecture Overview
+  </text>
+
+  <!-- Layer 1: Email Providers -->
+  <g transform="translate(0, 80)">
+    <text x="500" y="0" font-family="'Inter', sans-serif" font-size="18" fill="#6B7280" text-anchor="middle" font-weight="600">
+      Email Providers
+    </text>
+
+    <!-- Gmail -->
+    <g transform="translate(150, 30)">
+      <rect x="0" y="0" width="150" height="80" rx="8" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="2" filter="url(#compShadow)"/>
+      <text x="75" y="35" font-family="'Inter', sans-serif" font-size="16" fill="#1F2937" text-anchor="middle" font-weight="600">
+        Gmail
+      </text>
+      <text x="75" y="55" font-family="'Inter', sans-serif" font-size="12" fill="#6B7280" text-anchor="middle">
+        Sends DMARC
+      </text>
+      <text x="75" y="70" font-family="'Inter', sans-serif" font-size="12" fill="#6B7280" text-anchor="middle">
+        reports daily
+      </text>
+    </g>
+
+    <!-- Outlook -->
+    <g transform="translate(425, 30)">
+      <rect x="0" y="0" width="150" height="80" rx="8" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="2" filter="url(#compShadow)"/>
+      <text x="75" y="35" font-family="'Inter', sans-serif" font-size="16" fill="#1F2937" text-anchor="middle" font-weight="600">
+        Outlook
+      </text>
+      <text x="75" y="55" font-family="'Inter', sans-serif" font-size="12" fill="#6B7280" text-anchor="middle">
+        Sends DMARC
+      </text>
+      <text x="75" y="70" font-family="'Inter', sans-serif" font-size="12" fill="#6B7280" text-anchor="middle">
+        reports daily
+      </text>
+    </g>
+
+    <!-- Yahoo -->
+    <g transform="translate(700, 30)">
+      <rect x="0" y="0" width="150" height="80" rx="8" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="2" filter="url(#compShadow)"/>
+      <text x="75" y="35" font-family="'Inter', sans-serif" font-size="16" fill="#1F2937" text-anchor="middle" font-weight="600">
+        Yahoo
+      </text>
+      <text x="75" y="55" font-family="'Inter', sans-serif" font-size="12" fill="#6B7280" text-anchor="middle">
+        Sends DMARC
+      </text>
+      <text x="75" y="70" font-family="'Inter', sans-serif" font-size="12" fill="#6B7280" text-anchor="middle">
+        reports daily
+      </text>
+    </g>
+
+    <!-- Arrows down -->
+    <path d="M225,115 L225,180" stroke="#3B82F6" stroke-width="2" marker-end="url(#arrow)" stroke-dasharray="4 4"/>
+    <path d="M500,115 L500,180" stroke="#3B82F6" stroke-width="2" marker-end="url(#arrow)" stroke-dasharray="4 4"/>
+    <path d="M775,115 L775,180" stroke="#3B82F6" stroke-width="2" marker-end="url(#arrow)" stroke-dasharray="4 4"/>
+  </g>
+
+  <!-- Layer 2: Your Inbox -->
+  <g transform="translate(0, 260)">
+    <text x="500" y="0" font-family="'Inter', sans-serif" font-size="18" fill="#6B7280" text-anchor="middle" font-weight="600">
+      Your DMARC Inbox
+    </text>
+
+    <g transform="translate(300, 30)">
+      <rect x="0" y="0" width="400" height="100" rx="8" fill="#DBEAFE" stroke="#3B82F6" stroke-width="2" filter="url(#compShadow)"/>
+      <text x="200" y="35" font-family="'Inter', sans-serif" font-size="18" fill="#1E40AF" text-anchor="middle" font-weight="600">
+        dmarc@yourdomain.com
+      </text>
+
+      <!-- Email icons -->
+      <g transform="translate(50, 50)">
+        <rect x="0" y="0" width="60" height="40" rx="4" fill="#FFFFFF" stroke="#3B82F6" stroke-width="1"/>
+        <path d="M0,5 L30,25 L60,5" stroke="#3B82F6" stroke-width="2" fill="none"/>
+        <text x="30" y="55" font-family="'Inter', sans-serif" font-size="10" fill="#1E40AF" text-anchor="middle">
+          report1.xml.gz
+        </text>
+      </g>
+      <g transform="translate(170, 50)">
+        <rect x="0" y="0" width="60" height="40" rx="4" fill="#FFFFFF" stroke="#3B82F6" stroke-width="1"/>
+        <path d="M0,5 L30,25 L60,5" stroke="#3B82F6" stroke-width="2" fill="none"/>
+        <text x="30" y="55" font-family="'Inter', sans-serif" font-size="10" fill="#1E40AF" text-anchor="middle">
+          report2.xml.gz
+        </text>
+      </g>
+      <g transform="translate(290, 50)">
+        <rect x="0" y="0" width="60" height="40" rx="4" fill="#FFFFFF" stroke="#3B82F6" stroke-width="1"/>
+        <path d="M0,5 L30,25 L60,5" stroke="#3B82F6" stroke-width="2" fill="none"/>
+        <text x="30" y="55" font-family="'Inter', sans-serif" font-size="10" fill="#1E40AF" text-anchor="middle">
+          report3.xml.gz
+        </text>
+      </g>
+    </g>
+
+    <!-- Arrow down -->
+    <path d="M500,155 L500,220" stroke="#3B82F6" stroke-width="3" marker-end="url(#arrow)"/>
+    <text x="540" y="190" font-family="'Inter', sans-serif" font-size="14" fill="#3B82F6" font-weight="500">
+      IMAP + TLS
+    </text>
+  </g>
+
+  <!-- Layer 3: Parse DMARC (main component) -->
+  <g transform="translate(0, 480)">
+    <text x="500" y="0" font-family="'Inter', sans-serif" font-size="18" fill="#6B7280" text-anchor="middle" font-weight="600">
+      Parse DMARC Container (14MB)
+    </text>
+
+    <!-- Main container -->
+    <g transform="translate(200, 30)">
+      <rect x="0" y="0" width="600" height="200" rx="12" fill="#10B981" stroke="#059669" stroke-width="3" filter="url(#compShadow)"/>
+
+      <!-- Components inside -->
+      <!-- IMAP Fetcher -->
+      <g transform="translate(20, 30)">
+        <rect x="0" y="0" width="160" height="70" rx="6" fill="url(#compGrad)" stroke="#3B82F6" stroke-width="2"/>
+        <text x="80" y="25" font-family="'Inter', sans-serif" font-size="14" fill="#1E40AF" text-anchor="middle" font-weight="600">
+          IMAP Fetcher
+        </text>
+        <text x="80" y="45" font-family="'Inter', sans-serif" font-size="11" fill="#3B82F6" text-anchor="middle">
+          Auto-fetch reports
+        </text>
+        <text x="80" y="60" font-family="'Inter', sans-serif" font-size="11" fill="#3B82F6" text-anchor="middle">
+          every 5 minutes
+        </text>
+      </g>
+
+      <!-- XML Parser -->
+      <g transform="translate(220, 30)">
+        <rect x="0" y="0" width="160" height="70" rx="6" fill="url(#compGrad)" stroke="#3B82F6" stroke-width="2"/>
+        <text x="80" y="25" font-family="'Inter', sans-serif" font-size="14" fill="#1E40AF" text-anchor="middle" font-weight="600">
+          XML Parser
+        </text>
+        <text x="80" y="45" font-family="'Inter', sans-serif" font-size="11" fill="#3B82F6" text-anchor="middle">
+          Decompress &amp;
+        </text>
+        <text x="80" y="60" font-family="'Inter', sans-serif" font-size="11" fill="#3B82F6" text-anchor="middle">
+          parse DMARC XML
+        </text>
+      </g>
+
+      <!-- SQLite DB -->
+      <g transform="translate(420, 30)">
+        <rect x="0" y="0" width="160" height="70" rx="6" fill="url(#compGrad)" stroke="#3B82F6" stroke-width="2"/>
+        <text x="80" y="25" font-family="'Inter', sans-serif" font-size="14" fill="#1E40AF" text-anchor="middle" font-weight="600">
+          SQLite DB
+        </text>
+        <text x="80" y="45" font-family="'Inter', sans-serif" font-size="11" fill="#3B82F6" text-anchor="middle">
+          Store parsed data
+        </text>
+        <text x="80" y="60" font-family="'Inter', sans-serif" font-size="11" fill="#3B82F6" text-anchor="middle">
+          (persistent volume)
+        </text>
+      </g>
+
+      <!-- HTTP Server -->
+      <g transform="translate(20, 115)">
+        <rect x="0" y="0" width="160" height="70" rx="6" fill="url(#compGrad)" stroke="#3B82F6" stroke-width="2"/>
+        <text x="80" y="25" font-family="'Inter', sans-serif" font-size="14" fill="#1E40AF" text-anchor="middle" font-weight="600">
+          HTTP Server
+        </text>
+        <text x="80" y="45" font-family="'Inter', sans-serif" font-size="11" fill="#3B82F6" text-anchor="middle">
+          Serve API
+        </text>
+        <text x="80" y="60" font-family="'Inter', sans-serif" font-size="11" fill="#3B82F6" text-anchor="middle">
+          endpoints
+        </text>
+      </g>
+
+      <!-- Vue.js Frontend -->
+      <g transform="translate(220, 115)">
+        <rect x="0" y="0" width="360" height="70" rx="6" fill="url(#compGrad)" stroke="#3B82F6" stroke-width="2"/>
+        <text x="180" y="25" font-family="'Inter', sans-serif" font-size="14" fill="#1E40AF" text-anchor="middle" font-weight="600">
+          Vue.js Dashboard (Embedded)
+        </text>
+        <text x="180" y="45" font-family="'Inter', sans-serif" font-size="11" fill="#3B82F6" text-anchor="middle">
+          Beautiful UI with charts, statistics, and
+        </text>
+        <text x="180" y="60" font-family="'Inter', sans-serif" font-size="11" fill="#3B82F6" text-anchor="middle">
+          authentication results
+        </text>
+      </g>
+
+      <!-- Internal arrows -->
+      <path d="M100,105 L100,115" stroke="#3B82F6" stroke-width="2" marker-end="url(#arrow)"/>
+      <path d="M300,105 L300,115" stroke="#3B82F6" stroke-width="2" marker-end="url(#arrow)"/>
+    </g>
+
+    <!-- Arrow down to user -->
+    <path d="M500,250 L500,310" stroke="#3B82F6" stroke-width="3" marker-end="url(#arrow)"/>
+    <text x="540" y="282" font-family="'Inter', sans-serif" font-size="14" fill="#3B82F6" font-weight="500">
+      HTTP :8080
+    </text>
+  </g>
+
+  <!-- Layer 4: Users -->
+  <g transform="translate(0, 790)">
+    <!-- Browser icon -->
+    <g transform="translate(400, -60)">
+      <rect x="0" y="0" width="200" height="140" rx="8" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="2" filter="url(#compShadow)"/>
+      <rect x="0" y="0" width="200" height="30" rx="8" fill="#F3F4F6"/>
+      <circle cx="15" cy="15" r="5" fill="#EF4444"/>
+      <circle cx="30" cy="15" r="5" fill="#F59E0B"/>
+      <circle cx="45" cy="15" r="5" fill="#10B981"/>
+      <text x="100" y="75" font-family="'Inter', sans-serif" font-size="14" fill="#1F2937" text-anchor="middle" font-weight="600">
+        Dashboard
+      </text>
+      <text x="100" y="95" font-family="'Inter', sans-serif" font-size="11" fill="#6B7280" text-anchor="middle">
+        localhost:8080
+      </text>
+      <rect x="20" y="105" width="160" height="4" rx="2" fill="#10B981"/>
+      <rect x="20" y="115" width="120" height="4" rx="2" fill="#3B82F6"/>
+      <rect x="20" y="125" width="140" height="4" rx="2" fill="#EF4444" opacity="0.3"/>
+    </g>
+
+    <text x="500" y="-30" font-family="'Inter', sans-serif" font-size="16" fill="#6B7280" text-anchor="middle" font-weight="600">
+      Security Engineers • Email Admins • DevOps Teams
+    </text>
+  </g>
+</svg>

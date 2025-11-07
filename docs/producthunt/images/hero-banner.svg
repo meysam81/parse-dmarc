@@ -1,0 +1,122 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Hero banner for Product Hunt / Social Media -->
+  <defs>
+    <linearGradient id="heroBg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1E3A8A"/>
+      <stop offset="50%" stop-color="#2563EB"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+    <linearGradient id="glowGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="heroShadow">
+      <feDropShadow dx="0" dy="8" stdDeviation="16" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#heroBg)"/>
+
+  <!-- Decorative grid pattern -->
+  <g opacity="0.1">
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#FFFFFF" stroke-width="1"/>
+    </pattern>
+    <rect width="1200" height="630" fill="url(#grid)"/>
+  </g>
+
+  <!-- Decorative circles -->
+  <circle cx="100" cy="100" r="150" fill="#60A5FA" opacity="0.1"/>
+  <circle cx="1100" cy="530" r="200" fill="#3B82F6" opacity="0.1"/>
+
+  <!-- Main content container -->
+  <g transform="translate(100, 120)">
+    <!-- Logo icon (left side) -->
+    <g transform="scale(0.8)">
+      <path d="M120 40L40 76V150C40 207 75 254 120 273C165 254 200 207 200 150V76L120 40Z"
+            fill="#60A5FA"
+            opacity="0.9"
+            filter="url(#heroShadow)"/>
+      <rect x="74" y="117" width="92" height="66" rx="6"
+            fill="#FFFFFF"
+            stroke="#3B82F6"
+            stroke-width="3"/>
+      <path d="M74 122L120 154L166 122"
+            stroke="#3B82F6"
+            stroke-width="5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            fill="none"/>
+      <path d="M100 147L110 157L140 127"
+            stroke="#10B981"
+            stroke-width="7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            fill="none"/>
+    </g>
+
+    <!-- Main text content -->
+    <g transform="translate(240, 0)">
+      <!-- Main headline -->
+      <text x="0" y="60" font-family="'Inter', 'Helvetica', sans-serif" font-size="72" font-weight="700" fill="#FFFFFF" letter-spacing="-1">
+        Parse DMARC
+      </text>
+
+      <!-- Subheadline -->
+      <text x="0" y="120" font-family="'Inter', 'Helvetica', sans-serif" font-size="36" font-weight="400" fill="#DBEAFE" letter-spacing="0">
+        Stop email spoofing with DMARC
+      </text>
+      <text x="0" y="165" font-family="'Inter', 'Helvetica', sans-serif" font-size="36" font-weight="400" fill="#DBEAFE" letter-spacing="0">
+        reports in a beautiful dashboard
+      </text>
+
+      <!-- Feature bullets -->
+      <g transform="translate(0, 220)">
+        <g>
+          <circle cx="0" cy="0" r="8" fill="#10B981"/>
+          <text x="20" y="8" font-family="'Inter', sans-serif" font-size="24" fill="#FFFFFF" font-weight="500">
+            Auto-fetch from any inbox • 14MB Docker image • Zero dependencies
+          </text>
+        </g>
+      </g>
+
+      <!-- CTA -->
+      <g transform="translate(0, 280)">
+        <rect x="0" y="0" width="480" height="60" rx="30" fill="#10B981" filter="url(#heroShadow)"/>
+        <text x="240" y="40" font-family="'Inter', sans-serif" font-size="24" fill="#FFFFFF" text-anchor="middle" font-weight="600">
+          docker run ghcr.io/meysam81/parse-dmarc
+        </text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Stats bar at bottom -->
+  <g transform="translate(100, 540)">
+    <rect x="0" y="0" width="1000" height="60" rx="12" fill="#FFFFFF" opacity="0.15"/>
+
+    <g transform="translate(80, 30)">
+      <text x="0" y="0" font-family="'Inter', sans-serif" font-size="20" fill="#FFFFFF" text-anchor="middle" font-weight="600">
+        ⚡ 30s Setup
+      </text>
+    </g>
+
+    <g transform="translate(330, 30)">
+      <text x="0" y="0" font-family="'Inter', sans-serif" font-size="20" fill="#FFFFFF" text-anchor="middle" font-weight="600">
+        📊 Real-time Dashboard
+      </text>
+    </g>
+
+    <g transform="translate(620, 30)">
+      <text x="0" y="0" font-family="'Inter', sans-serif" font-size="20" fill="#FFFFFF" text-anchor="middle" font-weight="600">
+        🔒 Self-hosted
+      </text>
+    </g>
+
+    <g transform="translate(860, 30)">
+      <text x="0" y="0" font-family="'Inter', sans-serif" font-size="20" fill="#FFFFFF" text-anchor="middle" font-weight="600">
+        🚀 Open Source
+      </text>
+    </g>
+  </g>
+</svg>

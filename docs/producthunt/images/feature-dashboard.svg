@@ -1,0 +1,148 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Dashboard feature illustration -->
+  <defs>
+    <linearGradient id="dashGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#EFF6FF"/>
+      <stop offset="100%" stop-color="#DBEAFE"/>
+    </linearGradient>
+    <filter id="cardShadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+
+  <!-- Title -->
+  <text x="400" y="50" font-family="'Inter', sans-serif" font-size="36" font-weight="600" fill="#1F2937" text-anchor="middle">
+    Beautiful Real-Time Dashboard
+  </text>
+
+  <!-- Browser window frame -->
+  <rect x="50" y="90" width="700" height="440" rx="12" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="2" filter="url(#cardShadow)"/>
+
+  <!-- Browser chrome -->
+  <rect x="50" y="90" width="700" height="40" rx="12" fill="#F3F4F6"/>
+  <rect x="50" y="118" width="700" height="12" fill="#F3F4F6"/>
+  <circle cx="70" cy="105" r="6" fill="#EF4444"/>
+  <circle cx="90" cy="105" r="6" fill="#F59E0B"/>
+  <circle cx="110" cy="105" r="6" fill="#10B981"/>
+
+  <!-- URL bar -->
+  <rect x="140" y="97" width="520" height="16" rx="8" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="1"/>
+  <text x="150" y="109" font-family="'Inter', sans-serif" font-size="12" fill="#9CA3AF">
+    localhost:8080
+  </text>
+
+  <!-- Dashboard content -->
+  <g transform="translate(70, 150)">
+    <!-- Stats cards row -->
+    <g>
+      <!-- Card 1: Total Messages -->
+      <rect x="0" y="0" width="200" height="100" rx="8" fill="url(#dashGrad)" stroke="#3B82F6" stroke-width="2"/>
+      <text x="15" y="30" font-family="'Inter', sans-serif" font-size="14" fill="#6B7280" font-weight="500">
+        TOTAL MESSAGES
+      </text>
+      <text x="15" y="65" font-family="'Inter', sans-serif" font-size="36" fill="#1F2937" font-weight="700">
+        24,891
+      </text>
+      <text x="15" y="85" font-family="'Inter', sans-serif" font-size="12" fill="#10B981">
+        ↗ +2.3% this week
+      </text>
+
+      <!-- Card 2: Compliance Rate -->
+      <rect x="220" y="0" width="200" height="100" rx="8" fill="#D1FAE5" stroke="#10B981" stroke-width="2"/>
+      <text x="235" y="30" font-family="'Inter', sans-serif" font-size="14" fill="#6B7280" font-weight="500">
+        DMARC PASS RATE
+      </text>
+      <text x="235" y="65" font-family="'Inter', sans-serif" font-size="36" fill="#1F2937" font-weight="700">
+        94.2%
+      </text>
+      <text x="235" y="85" font-family="'Inter', sans-serif" font-size="12" fill="#10B981">
+        ✓ Excellent
+      </text>
+
+      <!-- Card 3: Failed -->
+      <rect x="440" y="0" width="200" height="100" rx="8" fill="#FEE2E2" stroke="#EF4444" stroke-width="2"/>
+      <text x="455" y="30" font-family="'Inter', sans-serif" font-size="14" fill="#6B7280" font-weight="500">
+        FAILED AUTH
+      </text>
+      <text x="455" y="65" font-family="'Inter', sans-serif" font-size="36" fill="#1F2937" font-weight="700">
+        1,447
+      </text>
+      <text x="455" y="85" font-family="'Inter', sans-serif" font-size="12" fill="#DC2626">
+        ⚠ Needs attention
+      </text>
+    </g>
+
+    <!-- Chart section -->
+    <g transform="translate(0, 130)">
+      <rect x="0" y="0" width="660" height="180" rx="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="2"/>
+      <text x="15" y="25" font-family="'Inter', sans-serif" font-size="16" fill="#1F2937" font-weight="600">
+        Authentication Results Over Time
+      </text>
+
+      <!-- Simple line chart -->
+      <g transform="translate(30, 50)">
+        <!-- Grid lines -->
+        <line x1="0" y1="0" x2="600" y2="0" stroke="#F3F4F6" stroke-width="1"/>
+        <line x1="0" y1="30" x2="600" y2="30" stroke="#F3F4F6" stroke-width="1"/>
+        <line x1="0" y1="60" x2="600" y2="60" stroke="#F3F4F6" stroke-width="1"/>
+        <line x1="0" y1="90" x2="600" y2="90" stroke="#F3F4F6" stroke-width="1"/>
+        <line x1="0" y1="120" x2="600" y2="120" stroke="#E5E7EB" stroke-width="2"/>
+
+        <!-- Chart lines -->
+        <!-- PASS line (green) -->
+        <path d="M0,90 L100,75 L200,60 L300,55 L400,50 L500,45 L600,40"
+              stroke="#10B981"
+              stroke-width="3"
+              fill="none"
+              stroke-linecap="round"/>
+
+        <!-- FAIL line (red) -->
+        <path d="M0,110 L100,112 L200,108 L300,105 L400,107 L500,110 L600,108"
+              stroke="#EF4444"
+              stroke-width="3"
+              fill="none"
+              stroke-linecap="round"/>
+
+        <!-- Legend -->
+        <g transform="translate(450, -20)">
+          <circle cx="0" cy="0" r="5" fill="#10B981"/>
+          <text x="12" y="5" font-family="'Inter', sans-serif" font-size="12" fill="#6B7280">
+            Pass
+          </text>
+          <circle cx="60" cy="0" r="5" fill="#EF4444"/>
+          <text x="72" y="5" font-family="'Inter', sans-serif" font-size="12" fill="#6B7280">
+            Fail
+          </text>
+        </g>
+
+        <!-- X-axis labels -->
+        <text x="0" y="140" font-family="'Inter', sans-serif" font-size="10" fill="#9CA3AF" text-anchor="middle">
+          Mon
+        </text>
+        <text x="100" y="140" font-family="'Inter', sans-serif" font-size="10" fill="#9CA3AF" text-anchor="middle">
+          Tue
+        </text>
+        <text x="200" y="140" font-family="'Inter', sans-serif" font-size="10" fill="#9CA3AF" text-anchor="middle">
+          Wed
+        </text>
+        <text x="300" y="140" font-family="'Inter', sans-serif" font-size="10" fill="#9CA3AF" text-anchor="middle">
+          Thu
+        </text>
+        <text x="400" y="140" font-family="'Inter', sans-serif" font-size="10" fill="#9CA3AF" text-anchor="middle">
+          Fri
+        </text>
+        <text x="500" y="140" font-family="'Inter', sans-serif" font-size="10" fill="#9CA3AF" text-anchor="middle">
+          Sat
+        </text>
+        <text x="600" y="140" font-family="'Inter', sans-serif" font-size="10" fill="#9CA3AF" text-anchor="middle">
+          Sun
+        </text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Feature highlight -->
+  <text x="400" y="570" font-family="'Inter', sans-serif" font-size="18" fill="#6B7280" text-anchor="middle" font-style="italic">
+    All insights at a glance — no more parsing XML manually
+  </text>
+</svg>
