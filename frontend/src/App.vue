@@ -36,7 +36,7 @@
             <a
               href="https://github.com/meysam81/parse-dmarc"
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
               class="star-button"
             >
               ⭐ Star on GitHub
