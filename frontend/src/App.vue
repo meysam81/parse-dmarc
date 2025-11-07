@@ -44,7 +44,8 @@
             <button
               class="dismiss-button"
               @click="dismissStarBanner"
-              title="Dismiss"
+              title="Dismiss star banner"
+              aria-label="Dismiss star banner"
             >
               ×
             </button>
