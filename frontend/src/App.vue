@@ -795,6 +795,10 @@ export default {
   border-color: rgba(255, 255, 255, 0.5);
 }
 
+.dismiss-button:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
 .main {
   flex: 1;
   padding: 2rem 0;
