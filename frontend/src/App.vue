@@ -764,6 +764,10 @@ export default {
   background: linear-gradient(135deg, #ffed4e, #ffd700);
 }
 
+.star-button:focus-visible {
+  outline: 2px solid #333;
+  outline-offset: 2px;
+}
 .dismiss-button {
   background: rgba(255, 255, 255, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.3);
