@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 100" width="400" height="100">
+  <defs>
+    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Shield icon -->
+  <g transform="translate(10, 10)">
+    <path d="M 40 5
+             L 65 17
+             L 65 40
+             Q 65 57, 40 75
+             Q 15 57, 15 40
+             L 15 17
+             Z"
+          fill="url(#logoGradient)"
+          stroke="#fff"
+          stroke-width="2"/>
+
+    <!-- Check mark -->
+    <path d="M 30 40 L 38 48 L 52 28"
+          fill="none"
+          stroke="#fff"
+          stroke-width="4"
+          stroke-linecap="round"
+          stroke-linejoin="round"/>
+  </g>
+
+  <!-- Text: Parse DMARC -->
+  <text x="95" y="55" font-family="Arial, sans-serif" font-size="36" font-weight="700" fill="url(#logoGradient)">
+    Parse DMARC
+  </text>
+
+  <!-- Tagline -->
+  <text x="95" y="75" font-family="Arial, sans-serif" font-size="12" fill="#666">
+    Email Authentication Monitoring
+  </text>
+</svg>
