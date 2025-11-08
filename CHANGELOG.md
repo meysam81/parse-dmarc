@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.1.0](https://github.com/meysam81/parse-dmarc/compare/v1.0.2...v1.1.0) (2025-11-08)
+
+
+### Features
+
+* **docs:** add nerdy badges to README ([#23](https://github.com/meysam81/parse-dmarc/issues/23)) ([5026a45](https://github.com/meysam81/parse-dmarc/commit/5026a45da22a9fa0a3c831945da4afaa05c2dd7c))
+
+
+### Bug Fixes
+
+* **CI:** update goreleaser after moving FE to root ([357d37e](https://github.com/meysam81/parse-dmarc/commit/357d37ed69d9cd7400c05c2f7ca2667072f4d46d))
+
 ## [1.0.2](https://github.com/meysam81/parse-dmarc/compare/v1.0.1...v1.0.2) (2025-11-07)
 
 
