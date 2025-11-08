@@ -2,13 +2,11 @@
 
 [![License](https://img.shields.io/github/license/meysam81/parse-dmarc?style=flat-square)](https://github.com/meysam81/parse-dmarc/blob/main/LICENSE)
 [![GitHub release](https://img.shields.io/github/v/release/meysam81/parse-dmarc?style=flat-square)](https://github.com/meysam81/parse-dmarc/releases)
-[![Docker Image Size](https://img.shields.io/docker/image-size/meysam81/parse-dmarc/latest?style=flat-square&logo=docker)](https://hub.docker.com/r/meysam81/parse-dmarc)
 [![GitHub Stars](https://img.shields.io/github/stars/meysam81/parse-dmarc?style=flat-square&logo=github)](https://github.com/meysam81/parse-dmarc/stargazers)
 [![GitHub Issues](https://img.shields.io/github/issues/meysam81/parse-dmarc?style=flat-square&logo=github)](https://github.com/meysam81/parse-dmarc/issues)
 [![Go Report Card](https://goreportcard.com/badge/github.com/meysam81/parse-dmarc?style=flat-square)](https://goreportcard.com/report/github.com/meysam81/parse-dmarc)
 [![Made with Go](https://img.shields.io/badge/Made%20with-Go-1f425f.svg?style=flat-square&logo=go)](https://go.dev)
 [![Made with Vue.js](https://img.shields.io/badge/Made%20with-Vue.js-4FC08D.svg?style=flat-square&logo=vue.js)](https://vuejs.org)
-[![Docker Pulls](https://img.shields.io/docker/pulls/meysam81/parse-dmarc?style=flat-square&logo=docker)](https://hub.docker.com/r/meysam81/parse-dmarc)
 [![GHCR](https://img.shields.io/badge/GHCR-ghcr.io%2Fmeysam81%2Fparse--dmarc-blue?style=flat-square&logo=github)](https://github.com/meysam81/parse-dmarc/pkgs/container/parse-dmarc)
 
 **Monitor who's sending email on behalf of your domain. Catch spoofing. Stop phishing.**
