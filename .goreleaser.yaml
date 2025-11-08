@@ -6,7 +6,7 @@ version: 2
 before:
   hooks:
     - go mod download
-    - cd frontend && bun install --frozen-lockfile && bun run build
+    - bun install --frozen-lockfile && bun run build
 
 builds:
   - main: ./cmd/parse-dmarc
