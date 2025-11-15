@@ -1,0 +1,66 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Modern shield + envelope icon for Parse DMARC -->
+  <defs>
+    <linearGradient id="shieldGradient" x1="256" y1="48" x2="256" y2="464" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#1D4ED8"/>
+    </linearGradient>
+    <linearGradient id="envelopeGradient" x1="256" y1="180" x2="256" y2="340" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#60A5FA"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4"/>
+      <feOffset dx="0" dy="4" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.2"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Shield shape -->
+  <path d="M256 48L96 112V256C96 352 160 432 256 464C352 432 416 352 416 256V112L256 48Z"
+        fill="url(#shieldGradient)"
+        filter="url(#shadow)"/>
+
+  <!-- Shield outline for depth -->
+  <path d="M256 48L96 112V256C96 352 160 432 256 464C352 432 416 352 416 256V112L256 48Z"
+        fill="none"
+        stroke="#1E3A8A"
+        stroke-width="4"
+        opacity="0.3"/>
+
+  <!-- Envelope shape (simplified, modern) -->
+  <rect x="160" y="200" width="192" height="136" rx="8"
+        fill="url(#envelopeGradient)"
+        stroke="#FFFFFF"
+        stroke-width="4"/>
+
+  <!-- Envelope flap -->
+  <path d="M160 208L256 272L352 208"
+        stroke="#FFFFFF"
+        stroke-width="6"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        fill="none"/>
+
+  <!-- Checkmark (DMARC pass indicator) -->
+  <path d="M220 268L240 288L292 236"
+        stroke="#10B981"
+        stroke-width="8"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        fill="none"
+        opacity="0.9"/>
+
+  <!-- Subtle highlight on shield -->
+  <path d="M256 64L128 116V256C128 337 181 407 256 435"
+        fill="none"
+        stroke="#FFFFFF"
+        stroke-width="2"
+        opacity="0.15"/>
+</svg>

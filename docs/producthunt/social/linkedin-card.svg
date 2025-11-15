@@ -1,0 +1,118 @@
+<svg width="1200" height="627" viewBox="0 0 1200 627" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- LinkedIn Card (1.91:1 ratio) -->
+  <defs>
+    <linearGradient id="liBg" x1="0" y1="0" x2="1200" y2="627" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1E3A8A"/>
+      <stop offset="50%" stop-color="#2563EB"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="627" fill="url(#liBg)"/>
+
+  <!-- Professional subtle pattern -->
+  <g opacity="0.06">
+    <pattern id="liPattern" width="80" height="80" patternUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="40" height="40" fill="#FFFFFF"/>
+      <rect x="40" y="40" width="40" height="40" fill="#FFFFFF"/>
+    </pattern>
+    <rect width="1200" height="627" fill="url(#liPattern)"/>
+  </g>
+
+  <!-- Content container -->
+  <g transform="translate(100, 100)">
+    <!-- Left side: Icon and stats -->
+    <g>
+      <g transform="scale(0.7)">
+        <path d="M130 40L50 76V150C50 207 85 254 130 273C175 254 210 207 210 150V76L130 40Z"
+              fill="#FFFFFF"
+              opacity="0.95"/>
+        <rect x="84" y="117" width="92" height="66" rx="6"
+              fill="#3B82F6"
+              stroke="#FFFFFF"
+              stroke-width="2"/>
+        <path d="M84 122L130 154L176 122"
+              stroke="#FFFFFF"
+              stroke-width="4"
+              stroke-linecap="round"
+              fill="none"/>
+        <path d="M110 147L120 157L150 127"
+              stroke="#10B981"
+              stroke-width="6"
+              stroke-linecap="round"
+              fill="none"/>
+      </g>
+
+      <!-- Stats boxes -->
+      <g transform="translate(0, 220)">
+        <rect x="0" y="0" width="200" height="70" rx="10" fill="#FFFFFF" opacity="0.2"/>
+        <text x="100" y="30" font-family="'Inter', sans-serif" font-size="32" fill="#FFFFFF" text-anchor="middle" font-weight="700">
+          14MB
+        </text>
+        <text x="100" y="55" font-family="'Inter', sans-serif" font-size="16" fill="#DBEAFE" text-anchor="middle">
+          Total Size
+        </text>
+      </g>
+
+      <g transform="translate(0, 310)">
+        <rect x="0" y="0" width="200" height="70" rx="10" fill="#FFFFFF" opacity="0.2"/>
+        <text x="100" y="30" font-family="'Inter', sans-serif" font-size="32" fill="#FFFFFF" text-anchor="middle" font-weight="700">
+          30s
+        </text>
+        <text x="100" y="55" font-family="'Inter', sans-serif" font-size="16" fill="#DBEAFE" text-anchor="middle">
+          Setup Time
+        </text>
+      </g>
+    </g>
+
+    <!-- Right side: Main message -->
+    <g transform="translate(280, 0)">
+      <text x="0" y="60" font-family="'Inter', sans-serif" font-size="56" font-weight="700" fill="#FFFFFF" letter-spacing="-1">
+        Protect Your Domain
+      </text>
+      <text x="0" y="120" font-family="'Inter', sans-serif" font-size="56" font-weight="700" fill="#FFFFFF" letter-spacing="-1">
+        From Email Spoofing
+      </text>
+
+      <rect x="0" y="150" width="120" height="4" fill="#10B981"/>
+
+      <text x="0" y="200" font-family="'Inter', sans-serif" font-size="28" fill="#DBEAFE" font-weight="400">
+        Parse DMARC transforms cryptic XML reports
+      </text>
+      <text x="0" y="240" font-family="'Inter', sans-serif" font-size="28" fill="#DBEAFE" font-weight="400">
+        into a beautiful dashboard. Catch spoofing
+      </text>
+      <text x="0" y="280" font-family="'Inter', sans-serif" font-size="28" fill="#DBEAFE" font-weight="400">
+        attempts before they damage your reputation.
+      </text>
+
+      <!-- Key features -->
+      <g transform="translate(0, 330)">
+        <g>
+          <rect x="0" y="0" width="8" height="8" fill="#10B981"/>
+          <text x="20" y="8" font-family="'Inter', sans-serif" font-size="20" fill="#FFFFFF">
+            Auto-fetch from any IMAP inbox
+          </text>
+        </g>
+        <g transform="translate(0, 35)">
+          <rect x="0" y="0" width="8" height="8" fill="#10B981"/>
+          <text x="20" y="8" font-family="'Inter', sans-serif" font-size="20" fill="#FFFFFF">
+            Single Docker container, zero dependencies
+          </text>
+        </g>
+        <g transform="translate(0, 70)">
+          <rect x="0" y="0" width="8" height="8" fill="#10B981"/>
+          <text x="20" y="8" font-family="'Inter', sans-serif" font-size="20" fill="#FFFFFF">
+            Self-hosted, secure, open source
+          </text>
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <!-- Bottom branding -->
+  <text x="600" y="590" font-family="'Inter', sans-serif" font-size="20" fill="#FFFFFF" text-anchor="middle" opacity="0.8">
+    github.com/meysam81/parse-dmarc • Apache 2.0 License
+  </text>
+</svg>

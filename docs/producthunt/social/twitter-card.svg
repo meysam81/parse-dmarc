@@ -1,0 +1,74 @@
+<svg width="1200" height="600" viewBox="0 0 1200 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Twitter/X Card (2:1 ratio) -->
+  <defs>
+    <linearGradient id="twitterBg" x1="0" y1="0" x2="1200" y2="600" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1E40AF"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+    <filter id="tShadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="12" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="600" fill="url(#twitterBg)"/>
+
+  <!-- Grid pattern -->
+  <g opacity="0.08">
+    <pattern id="tGrid" width="50" height="50" patternUnits="userSpaceOnUse">
+      <circle cx="25" cy="25" r="1" fill="#FFFFFF"/>
+    </pattern>
+    <rect width="1200" height="600" fill="url(#tGrid)"/>
+  </g>
+
+  <!-- Content -->
+  <g transform="translate(80, 150)">
+    <!-- Icon -->
+    <g transform="scale(0.5)">
+      <path d="M100 30L30 60V125C30 172 60 212 100 228C140 212 170 172 170 125V60L100 30Z"
+            fill="#FFFFFF"
+            opacity="0.95"/>
+      <rect x="62" y="97" width="76" height="55" rx="4"
+            fill="#3B82F6"/>
+      <path d="M62 101L100 127L138 101"
+            stroke="#FFFFFF"
+            stroke-width="4"
+            stroke-linecap="round"
+            fill="none"/>
+      <path d="M83 122L93 132L117 108"
+            stroke="#10B981"
+            stroke-width="5"
+            stroke-linecap="round"
+            fill="none"/>
+    </g>
+
+    <!-- Text content -->
+    <g transform="translate(140, 0)">
+      <text x="0" y="50" font-family="'Inter', sans-serif" font-size="64" font-weight="700" fill="#FFFFFF">
+        Parse DMARC
+      </text>
+
+      <text x="0" y="110" font-family="'Inter', sans-serif" font-size="32" fill="#DBEAFE" font-weight="400">
+        Transform cryptic XML reports into
+      </text>
+      <text x="0" y="150" font-family="'Inter', sans-serif" font-size="32" fill="#DBEAFE" font-weight="400">
+        actionable security insights
+      </text>
+
+      <g transform="translate(0, 200)">
+        <rect x="0" y="0" width="300" height="50" rx="25" fill="#10B981"/>
+        <text x="150" y="34" font-family="'Inter', sans-serif" font-size="20" fill="#FFFFFF" text-anchor="middle" font-weight="600">
+          14MB • Zero Dependencies
+        </text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Footer badge -->
+  <g transform="translate(920, 500)">
+    <rect x="0" y="0" width="220" height="60" rx="30" fill="#FFFFFF" opacity="0.2"/>
+    <text x="110" y="38" font-family="'Inter', sans-serif" font-size="18" fill="#FFFFFF" text-anchor="middle" font-weight="600">
+      🚀 Launch on Product Hunt
+    </text>
+  </g>
+</svg>

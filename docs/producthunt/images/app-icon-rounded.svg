@@ -1,0 +1,56 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- App icon with rounded corners for various platforms -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0" y1="0" x2="1024" y2="1024" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2563EB"/>
+      <stop offset="100%" stop-color="#1E40AF"/>
+    </linearGradient>
+    <linearGradient id="iconShield" x1="512" y1="180" x2="512" y2="844" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#60A5FA"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Rounded rectangle background -->
+  <rect width="1024" height="1024" rx="225" fill="url(#bgGradient)"/>
+
+  <!-- Shield shape (larger for app icon) -->
+  <path d="M512 180L256 280V512C256 672 352 800 512 844C672 800 768 672 768 512V280L512 180Z"
+        fill="url(#iconShield)"
+        opacity="0.95"/>
+
+  <!-- Shield outline -->
+  <path d="M512 180L256 280V512C256 672 352 800 512 844C672 800 768 672 768 512V280L512 180Z"
+        fill="none"
+        stroke="#FFFFFF"
+        stroke-width="8"
+        opacity="0.4"/>
+
+  <!-- Envelope -->
+  <rect x="360" y="400" width="304" height="224" rx="16"
+        fill="#FFFFFF"
+        opacity="0.95"/>
+
+  <!-- Envelope flap -->
+  <path d="M360 424L512 528L664 424"
+        stroke="#2563EB"
+        stroke-width="12"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        fill="none"/>
+
+  <!-- Large checkmark -->
+  <path d="M440 528L480 568L584 464"
+        stroke="#10B981"
+        stroke-width="16"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        fill="none"/>
+
+  <!-- Highlight effect -->
+  <path d="M512 210L300 290V512C300 650 380 760 512 798"
+        fill="none"
+        stroke="#FFFFFF"
+        stroke-width="4"
+        opacity="0.2"/>
+</svg>

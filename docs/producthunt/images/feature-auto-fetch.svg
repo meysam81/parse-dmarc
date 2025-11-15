@@ -1,0 +1,131 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Auto-fetch feature illustration -->
+  <defs>
+    <linearGradient id="mailboxGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#2563EB"/>
+    </linearGradient>
+    <linearGradient id="serverGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Title -->
+  <text x="400" y="60" font-family="'Inter', sans-serif" font-size="36" font-weight="600" fill="#1F2937" text-anchor="middle">
+    Auto-Fetch from Any Inbox
+  </text>
+
+  <!-- Inbox representation (left) -->
+  <g transform="translate(80, 150)">
+    <!-- Gmail icon style -->
+    <rect width="160" height="140" rx="12" fill="#F3F4F6" stroke="#D1D5DB" stroke-width="2"/>
+    <path d="M20 40L80 80L140 40V120C140 126 135 130 130 130H30C25 130 20 126 20 120V40Z"
+          fill="url(#mailboxGrad)"/>
+    <path d="M20 40L80 80L140 40"
+          stroke="#FFFFFF"
+          stroke-width="3"
+          stroke-linecap="round"
+          fill="none"/>
+    <text x="80" y="160" font-family="'Inter', sans-serif" font-size="18" fill="#6B7280" text-anchor="middle" font-weight="500">
+      Gmail / Outlook
+    </text>
+
+    <!-- Email items in inbox -->
+    <g transform="translate(25, 45)">
+      <rect y="0" width="110" height="16" rx="4" fill="#DBEAFE" opacity="0.8"/>
+      <rect y="22" width="110" height="16" rx="4" fill="#DBEAFE" opacity="0.8"/>
+      <rect y="44" width="110" height="16" rx="4" fill="#DBEAFE" opacity="0.8"/>
+      <circle cx="8" cy="8" r="4" fill="#3B82F6"/>
+      <circle cx="8" cy="30" r="4" fill="#3B82F6"/>
+      <circle cx="8" cy="52" r="4" fill="#3B82F6"/>
+    </g>
+  </g>
+
+  <!-- Arrow animation (center) -->
+  <g transform="translate(280, 210)">
+    <!-- Animated arrow -->
+    <path d="M0 0L200 0"
+          stroke="#3B82F6"
+          stroke-width="4"
+          stroke-dasharray="8 4"
+          marker-end="url(#arrowhead)"/>
+    <defs>
+      <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+        <polygon points="0 0, 10 3, 0 6" fill="#3B82F6"/>
+      </marker>
+    </defs>
+
+    <!-- Floating envelopes along arrow -->
+    <g opacity="0.7">
+      <rect x="40" y="-15" width="30" height="22" rx="3" fill="#3B82F6"/>
+      <path d="M40 -12L55 -3L70 -12" stroke="#FFFFFF" stroke-width="2" fill="none"/>
+    </g>
+    <g opacity="0.5">
+      <rect x="100" y="-15" width="30" height="22" rx="3" fill="#3B82F6"/>
+      <path d="M100 -12L115 -3L130 -12" stroke="#FFFFFF" stroke-width="2" fill="none"/>
+    </g>
+    <g opacity="0.3">
+      <rect x="160" y="-15" width="30" height="22" rx="3" fill="#3B82F6"/>
+      <path d="M160 -12L175 -3L190 -12" stroke="#FFFFFF" stroke-width="2" fill="none"/>
+    </g>
+
+    <!-- "IMAP/TLS" label -->
+    <text x="100" y="30" font-family="'Inter', sans-serif" font-size="14" fill="#6B7280" text-anchor="middle">
+      IMAP + TLS
+    </text>
+  </g>
+
+  <!-- Parse DMARC server (right) -->
+  <g transform="translate(520, 150)">
+    <!-- Server/container icon -->
+    <rect width="160" height="140" rx="12" fill="url(#serverGrad)" stroke="#059669" stroke-width="2"/>
+
+    <!-- Docker-style layers -->
+    <rect x="20" y="30" width="120" height="8" rx="2" fill="#FFFFFF" opacity="0.3"/>
+    <rect x="20" y="44" width="120" height="8" rx="2" fill="#FFFFFF" opacity="0.3"/>
+    <rect x="20" y="58" width="120" height="8" rx="2" fill="#FFFFFF" opacity="0.3"/>
+
+    <!-- Parse icon in center -->
+    <circle cx="80" cy="95" r="25" fill="#FFFFFF" opacity="0.9"/>
+    <path d="M70 95L77 102L92 87"
+          stroke="#10B981"
+          stroke-width="4"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          fill="none"/>
+
+    <text x="80" y="160" font-family="'Inter', sans-serif" font-size="18" fill="#6B7280" text-anchor="middle" font-weight="500">
+      Parse DMARC
+    </text>
+  </g>
+
+  <!-- Feature benefits -->
+  <g transform="translate(100, 380)">
+    <circle cx="0" cy="0" r="8" fill="#10B981"/>
+    <text x="20" y="6" font-family="'Inter', sans-serif" font-size="20" fill="#374151">
+      Connects to any IMAP inbox automatically
+    </text>
+  </g>
+
+  <g transform="translate(100, 430)">
+    <circle cx="0" cy="0" r="8" fill="#10B981"/>
+    <text x="20" y="6" font-family="'Inter', sans-serif" font-size="20" fill="#374151">
+      Secure TLS encryption for all connections
+    </text>
+  </g>
+
+  <g transform="translate(100, 480)">
+    <circle cx="0" cy="0" r="8" fill="#10B981"/>
+    <text x="20" y="6" font-family="'Inter', sans-serif" font-size="20" fill="#374151">
+      Configurable fetch intervals (default: 5 minutes)
+    </text>
+  </g>
+
+  <g transform="translate(100, 530)">
+    <circle cx="0" cy="0" r="8" fill="#10B981"/>
+    <text x="20" y="6" font-family="'Inter', sans-serif" font-size="20" fill="#374151">
+      No manual XML parsing ever again
+    </text>
+  </g>
+</svg>

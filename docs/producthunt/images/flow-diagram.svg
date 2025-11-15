@@ -1,0 +1,201 @@
+<svg width="900" height="700" viewBox="0 0 900 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Flow diagram showing the DMARC process -->
+  <defs>
+    <marker id="flowArrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#3B82F6"/>
+    </marker>
+    <filter id="flowShadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+
+  <!-- Title -->
+  <text x="450" y="40" font-family="'Inter', sans-serif" font-size="28" font-weight="600" fill="#1F2937" text-anchor="middle">
+    How DMARC Monitoring Works
+  </text>
+
+  <!-- Step 1: Setup -->
+  <g transform="translate(50, 100)">
+    <circle cx="40" cy="40" r="35" fill="#3B82F6" filter="url(#flowShadow)"/>
+    <text x="40" y="50" font-family="'Inter', sans-serif" font-size="28" fill="#FFFFFF" text-anchor="middle" font-weight="700">
+      1
+    </text>
+
+    <g transform="translate(100, 0)">
+      <rect x="0" y="0" width="320" height="90" rx="8" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+      <text x="160" y="30" font-family="'Inter', sans-serif" font-size="18" fill="#1E40AF" text-anchor="middle" font-weight="600">
+        Setup DMARC DNS Record
+      </text>
+      <text x="160" y="55" font-family="'Inter', sans-serif" font-size="13" fill="#3B82F6" text-anchor="middle">
+        Add TXT record to your domain DNS:
+      </text>
+      <text x="160" y="75" font-family="'Monaco', monospace" font-size="11" fill="#1E40AF" text-anchor="middle">
+        v=DMARC1; rua=mailto:dmarc@yourdomain.com
+      </text>
+    </g>
+  </g>
+
+  <!-- Arrow -->
+  <path d="M450,200 L450,240" stroke="#3B82F6" stroke-width="3" marker-end="url(#flowArrow)"/>
+
+  <!-- Step 2: Email sent -->
+  <g transform="translate(50, 240)">
+    <circle cx="40" cy="40" r="35" fill="#3B82F6" filter="url(#flowShadow)"/>
+    <text x="40" y="50" font-family="'Inter', sans-serif" font-size="28" fill="#FFFFFF" text-anchor="middle" font-weight="700">
+      2
+    </text>
+
+    <g transform="translate(100, 0)">
+      <rect x="0" y="0" width="320" height="90" rx="8" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+      <text x="160" y="30" font-family="'Inter', sans-serif" font-size="18" fill="#1E40AF" text-anchor="middle" font-weight="600">
+        Email Sent Using Your Domain
+      </text>
+      <text x="160" y="55" font-family="'Inter', sans-serif" font-size="13" fill="#3B82F6" text-anchor="middle">
+        Someone sends email claiming to be from
+      </text>
+      <text x="160" y="75" font-family="'Inter', sans-serif" font-size="13" fill="#3B82F6" text-anchor="middle">
+        @yourdomain.com (legitimate or phishing)
+      </text>
+    </g>
+  </g>
+
+  <!-- Arrow -->
+  <path d="M450,340 L450,380" stroke="#3B82F6" stroke-width="3" marker-end="url(#flowArrow)"/>
+
+  <!-- Step 3: Provider checks -->
+  <g transform="translate(50, 380)">
+    <circle cx="40" cy="40" r="35" fill="#3B82F6" filter="url(#flowShadow)"/>
+    <text x="40" y="50" font-family="'Inter', sans-serif" font-size="28" fill="#FFFFFF" text-anchor="middle" font-weight="700">
+      3
+    </text>
+
+    <g transform="translate(100, 0)">
+      <rect x="0" y="0" width="320" height="90" rx="8" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+      <text x="160" y="30" font-family="'Inter', sans-serif" font-size="18" fill="#1E40AF" text-anchor="middle" font-weight="600">
+        Email Providers Check Auth
+      </text>
+      <text x="160" y="55" font-family="'Inter', sans-serif" font-size="13" fill="#3B82F6" text-anchor="middle">
+        Gmail, Outlook, Yahoo verify SPF &amp; DKIM
+      </text>
+      <text x="160" y="75" font-family="'Inter', sans-serif" font-size="13" fill="#3B82F6" text-anchor="middle">
+        Record result: ✓ Pass or ✗ Fail
+      </text>
+    </g>
+  </g>
+
+  <!-- Arrow -->
+  <path d="M450,480 L450,520" stroke="#3B82F6" stroke-width="3" marker-end="url(#flowArrow)"/>
+
+  <!-- Step 4: Reports sent -->
+  <g transform="translate(50, 520)">
+    <circle cx="40" cy="40" r="35" fill="#3B82F6" filter="url(#flowShadow)"/>
+    <text x="40" y="50" font-family="'Inter', sans-serif" font-size="28" fill="#FFFFFF" text-anchor="middle" font-weight="700">
+      4
+    </text>
+
+    <g transform="translate(100, 0)">
+      <rect x="0" y="0" width="320" height="90" rx="8" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+      <text x="160" y="30" font-family="'Inter', sans-serif" font-size="18" fill="#1E40AF" text-anchor="middle" font-weight="600">
+        Daily Reports Sent to Inbox
+      </text>
+      <text x="160" y="55" font-family="'Inter', sans-serif" font-size="13" fill="#3B82F6" text-anchor="middle">
+        Providers send compressed XML reports to
+      </text>
+      <text x="160" y="75" font-family="'Inter', sans-serif" font-size="13" fill="#3B82F6" text-anchor="middle">
+        dmarc@yourdomain.com with all results
+      </text>
+    </g>
+  </g>
+
+  <!-- Right side: Parse DMARC section -->
+  <g transform="translate(490, 220)">
+    <!-- Curved arrow pointing to Parse DMARC -->
+    <path d="M0,390 C50,390 50,50 100,50" stroke="#10B981" stroke-width="4" marker-end="url(#flowArrow)" fill="none" stroke-dasharray="8 4"/>
+
+    <!-- Parse DMARC box -->
+    <g transform="translate(100, 0)">
+      <rect x="0" y="0" width="280" height="420" rx="12" fill="#D1FAE5" stroke="#10B981" stroke-width="3" filter="url(#flowShadow)"/>
+
+      <!-- Header -->
+      <g transform="translate(140, 30)">
+        <circle cx="0" cy="0" r="30" fill="#10B981"/>
+        <path d="M-8,0 L-3,5 L10,-8"
+              stroke="#FFFFFF"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              fill="none"/>
+      </g>
+      <text x="140" y="90" font-family="'Inter', sans-serif" font-size="20" fill="#065F46" text-anchor="middle" font-weight="700">
+        Parse DMARC
+      </text>
+      <text x="140" y="110" font-family="'Inter', sans-serif" font-size="12" fill="#059669" text-anchor="middle">
+        Automates Everything
+      </text>
+
+      <!-- What it does -->
+      <g transform="translate(20, 140)">
+        <g>
+          <circle cx="0" cy="0" r="5" fill="#10B981"/>
+          <text x="15" y="5" font-family="'Inter', sans-serif" font-size="14" fill="#065F46" font-weight="500">
+            Auto-fetches reports
+          </text>
+          <text x="15" y="22" font-family="'Inter', sans-serif" font-size="11" fill="#059669">
+            via IMAP every 5 min
+          </text>
+        </g>
+
+        <g transform="translate(0, 60)">
+          <circle cx="0" cy="0" r="5" fill="#10B981"/>
+          <text x="15" y="5" font-family="'Inter', sans-serif" font-size="14" fill="#065F46" font-weight="500">
+            Decompresses files
+          </text>
+          <text x="15" y="22" font-family="'Inter', sans-serif" font-size="11" fill="#059669">
+            .xml.gz attachments
+          </text>
+        </g>
+
+        <g transform="translate(0, 120)">
+          <circle cx="0" cy="0" r="5" fill="#10B981"/>
+          <text x="15" y="5" font-family="'Inter', sans-serif" font-size="14" fill="#065F46" font-weight="500">
+            Parses XML
+          </text>
+          <text x="15" y="22" font-family="'Inter', sans-serif" font-size="11" fill="#059669">
+            Extracts all data points
+          </text>
+        </g>
+
+        <g transform="translate(0, 180)">
+          <circle cx="0" cy="0" r="5" fill="#10B981"/>
+          <text x="15" y="5" font-family="'Inter', sans-serif" font-size="14" fill="#065F46" font-weight="500">
+            Stores in SQLite
+          </text>
+          <text x="15" y="22" font-family="'Inter', sans-serif" font-size="11" fill="#059669">
+            Persistent database
+          </text>
+        </g>
+
+        <g transform="translate(0, 240)">
+          <circle cx="0" cy="0" r="5" fill="#10B981"/>
+          <text x="15" y="5" font-family="'Inter', sans-serif" font-size="14" fill="#065F46" font-weight="500">
+            Shows dashboard
+          </text>
+          <text x="15" y="22" font-family="'Inter', sans-serif" font-size="11" fill="#059669">
+            Real-time insights
+          </text>
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <!-- Bottom result -->
+  <g transform="translate(200, 640)">
+    <rect x="0" y="0" width="500" height="50" rx="8" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+    <text x="250" y="22" font-family="'Inter', sans-serif" font-size="16" fill="#92400E" text-anchor="middle" font-weight="600">
+      📊 Result: Beautiful dashboard with actionable insights
+    </text>
+    <text x="250" y="40" font-family="'Inter', sans-serif" font-size="12" fill="#B45309" text-anchor="middle">
+      No more manual XML parsing!
+    </text>
+  </g>
+</svg>
